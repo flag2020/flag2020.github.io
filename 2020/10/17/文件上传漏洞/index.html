@@ -100,6 +100,8 @@
        
   <h2 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h2><p>一些web应用程序中允许上传图片，文本或者其他资源到指定的位置，文件上传漏洞就是利用这些可以上传的地方将恶意代码植入到服务器中，再通过url去访问以执行代码。</p>
 <p>通常造成文件上传漏洞的原因是：对于上传文件的后缀名（扩展名），类型，以及内容没有做好严格的限制等等一些原因。</p>
+<a id="more"></a>
+
 <h3 id="htaccess任意文件解析"><a href="#htaccess任意文件解析" class="headerlink" title=".htaccess任意文件解析"></a>.htaccess任意文件解析</h3><p>当服务器是上传使用的是黑名单机制，但是锁死了不给上传php后缀的文件，我们可以使用.htaccess文件重新配置当前文件的解析后缀为其他后缀绕过导致其他后缀的文件被解析为php。导致远程代码执行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AddType application&#x2F;x-httpd-php .aaa</span><br></pre></td></tr></table></figure>
 
