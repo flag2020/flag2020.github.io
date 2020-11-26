@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.9k</span>
+            <span class="post-count">2k</span>
         </span>
     </span>
 
@@ -83,7 +83,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">8 分钟</span>
+            <span class="post-count">9 分钟</span>
         </span>
     </span>
 </div>
@@ -275,7 +275,6 @@
 
 <br>
 
-<p><strong>以下两题还没看到wp，等各位大佬补充</strong></p>
 <h3 id="no-blank-space"><a href="#no-blank-space" class="headerlink" title="no blank space"></a>no blank space</h3><p>题目：出题人的电脑年久失修，空格键失灵了，你能找到电报里的秘密吗(注:flag内字母全部大写）   flag格式：HECTF{.+}</p>
 <p>hint：试试别的电报码叭</p>
 <p>hint：古老的5bit编码</p>
@@ -283,6 +282,23 @@
 <li>cipher.txt</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.-.------.-...-.-----..-..----.-.--..-...-........--.-...-...-........--.-.-..--.----...--..-...-..-.....-.-.---.-...-..----.</span><br></pre></td></tr></table></figure>
+
+<p><strong>博多码</strong></p>
+<p>将<code>.</code>换成<code>1</code>，<code>-</code>换成<code>0</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="string">&#x27;.-.------.-...-.-----..-..----.-.--..-...-........--.-...-...-........--.-.-..--.----...--..-...-..-.....-.-.---.-...-..----.&#x27;</span>;</span><br><span class="line">$a = str_replace(<span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, $a);</span><br><span class="line">$a = str_replace(<span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, $a);</span><br><span class="line"><span class="keyword">echo</span> $a;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10100000010111010000011011000010100110111011111111001011101110111111110010101100100001110011011101101111101010001011101100001</span><br></pre></td></tr></table></figure>
+
+<p>用这个网站解码：<a target="_blank" rel="noopener" href="https://www.boxentriq.com/code-breaking/baudot-code">Baudot Code, Baudot-Murray Code (online tool) | Boxentriq</a></p>
+<p><img src="https://s3.ax1x.com/2020/11/26/D0J7Sf.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HECTFTH1S1SNTM0RS3</span><br></pre></td></tr></table></figure>
+
+<p>整理下得到flag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HECTF&#123;TH1S1SNTM0RS3&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也可以一个一个对照解码</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/SywnzjKe8U58SVCRVHoDacZsHKyhtVKIcBasicyaIaYo0q5iafPeclgtZQeKAcHwaibLQHOwibWOiaT1J0saevG7acg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">10100	H</span><br><span class="line">00001	E</span><br><span class="line">01110	C</span><br><span class="line">10000	T</span><br><span class="line">01101	F</span><br><span class="line">10000	T</span><br><span class="line">10100	H</span><br><span class="line">11011	切换到数字</span><br><span class="line">10111	1</span><br><span class="line">11111	切换到字母</span><br><span class="line">00101	S</span><br><span class="line">11011	切换到数字</span><br><span class="line">10111	1</span><br><span class="line">11111	切换到字母</span><br><span class="line">00101	S</span><br><span class="line">01100	N</span><br><span class="line">10000	T</span><br><span class="line">11100	M</span><br><span class="line">11011	切换到数字</span><br><span class="line">10110	0</span><br><span class="line">11111	切换到字母</span><br><span class="line">01010	R</span><br><span class="line">00101	S</span><br><span class="line">11011	切换到数字</span><br><span class="line">00001	3</span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -294,6 +310,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdqsrppwuzzyjhwrhyzripfpxol</span><br></pre></td></tr></table></figure>
 
+<p><strong>还没有wp</strong></p>
  
       <!-- reward -->
       
