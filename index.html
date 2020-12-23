@@ -139,136 +139,6 @@
     
     
     <article
-  id="post-无参数RCE"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/12/03/%E6%97%A0%E5%8F%82%E6%95%B0RCE/"
-    >无参数RCE
-  <i class="article-topping">置顶</i>
-</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/12/03/%E6%97%A0%E5%8F%82%E6%95%B0RCE/" class="article-date">
-  <time datetime="2020-12-02T16:00:00.000Z" itemprop="datePublished">2020-12-03</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>无参数RCE：就是只使用函数，且函数不能带有参数</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $_GET[<span class="string">&#x27;code&#x27;</span>])) &#123;    </span><br><span class="line">    <span class="keyword">eval</span>($_GET[<span class="string">&#x27;code&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure> 
-      <a class="article-more-link" href="/2020/12/03/%E6%97%A0%E5%8F%82%E6%95%B0RCE/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PHP 弱类型比较问题"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/10/29/PHP%20%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/"
-    >PHP 弱类型比较问题
-  <i class="article-topping">置顶</i>
-</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/10/29/PHP%20%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2020-10-29T15:00:00.000Z" itemprop="datePublished">2020-10-29</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <ul>
-<li><p>字符串和数字比较时，会先把字符串转换为数字，不能转换为数字的字符串或null，被转换为0。</p>
-</li>
-<li><p>bool true和任何比较都相等，除了0和false，因为0认为是bool false。</p>
-</li>
-<li><p>md5或者sha不能加密数组，所以在加密数组的时候会返回false。</p>
-</li>
-<li><p>“0x”开头跟数字的字符串（例如”0x1e240”）会被当作16进制数去比较。</p>
-</li>
-<li><p>只要是以0e开头，后面为数字的字符串和字符串0比较值都是相等的，即<code>0e\d+</code>的字符串 == ‘0’ 为true。</p>
-</li>
-<li><p>PHP5.3以上版本的strcmp()存在漏洞，只要$_GET[‘password’]是一个数组或者一个object即可绕过。</p>
-</li>
-</ul> 
-      <a class="article-more-link" href="/2020/10/29/PHP%20%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
   id="post-复现3道misc题"
   class="article article-type-post"
   itemscope
@@ -304,177 +174,11 @@
 <li>CISCN 2020 复赛(华南赛区) —— hidden_secret</li>
 <li>安洵杯 2019 —— easy misc</li>
 <li>SWPUCTF 2020 —— 耗子尾汁</li>
-</ul>
-<h2 id="hidden-secret"><a href="#hidden-secret" class="headerlink" title="hidden_secret"></a>hidden_secret</h2><p>题目：CISCN 2020 复赛（华南赛区）</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lziyang/p/13741751.html">CISCN 复赛(华南赛区)部分wp - 迷失的老鼠 - 博客园 (cnblogs.com)</a></p>
-<p>文件：<code>flag1.zip</code></p>
-<br>
-
-<p><code>flag1.zip</code>解压出来是一张图片（<code>hahah.jpg</code>）和一个压缩包（<code>hidden_secret.zip</code>）</p>
-<p>图片好像没什么东西，压缩包解密需要密码</p>
-<p>打开<code>hidden_secret.zip</code>，发现加密的文件里面也有<code>hahah.jpg</code>，而且crc校验值一样</p>
-<p><img src="https://s3.ax1x.com/2020/11/15/DP4ciq.png" alt="DP4ciq.png"></p>
-<p>用ARCHPR进行明文攻击</p>
-<p><img src="https://s3.ax1x.com/2020/11/15/DP5Al8.png" alt="DP5Al8.png"></p>
-<p><img src="https://s3.ax1x.com/2020/11/15/DP4OSK.png" alt="DP4OSK.png"></p>
-<p>拿到了<code>hidden_secret.zip</code>的解压密码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pb-1&#96;;ks</span><br></pre></td></tr></table></figure>
-
-<p>解压后又是那个狗头，还有个<code>hidden_secret.rar</code>，继续解压</p>
-<p>得到<code>key.gif</code></p>
-<p>中途看到有一帧有二维码</p>
-<p>用PS打开，在图层34查看图层</p>
-<p><a target="_blank" rel="noopener" href="https://imgchr.com/i/DP5v90"><img src="https://s3.ax1x.com/2020/11/15/DP5v90.png" alt="DP5v90.png"></a></p>
-<p>扫码得到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;ni_chou_sha&#125;</span><br></pre></td></tr></table></figure>
-
-<p>提交后发现不对😡</p>
-<br>
-
-<p>用stegsolve分析图像信息，可以发现这个gif动图的间隔时间分为10和20两种，考虑gif时间隐写</p>
-<p>将所有间隔时间分离出来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">identify -format &quot;%T&quot; key.gif</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s3.ax1x.com/2020/11/15/DPTg74.png" alt="DPTg74.png"></p>
-<p>得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1020201020201020102010101020101010102020102010201020102020202020102020101020201010202020101020201020202010201010</span><br></pre></td></tr></table></figure>
-
-<p>将<code>10</code>转化为<code>0</code>，<code>20</code>转化为<code>1</code></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="string">&quot;1020201020201020102010101020101010102020102010201020102020202020102020101020201010202020101020201020202010201010&quot;</span>;</span><br><span class="line"></span><br><span class="line">$a = str_replace(<span class="string">&#x27;10&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, $a);</span><br><span class="line">$a = str_replace(<span class="string">&#x27;20&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, $a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> $a;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01101101010001000011010101011111011001100111001101110100</span><br></pre></td></tr></table></figure>
-
-<p>将<a target="_blank" rel="noopener" href="http://www.ah888.org/wenben_binarystr.html">二进制转为字符串</a>，得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mD5_fst</span><br></pre></td></tr></table></figure>
-
-<p>md5加密后得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">046cb65e60a4774c76b4f99371e66f0d</span><br></pre></td></tr></table></figure>
-
-<p>根据题目提示ntfs，查看文件夹隐藏文件，在hidden_secret文件夹中发现隐藏文件</p>
-<p><img src="https://s3.ax1x.com/2020/11/15/DPHwQ0.png" alt="DPHwQ0.png"></p>
-<p>导出后重命名为<code>1.rar</code></p>
-<p>解压密码为上面的MD5</p>
-<p>解压得到<code>flag.txt</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;f935c5d0470757a3d2f3ee7467366f4e&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="easy-misc"><a href="#easy-misc" class="headerlink" title="easy misc"></a>easy misc</h2><p>题目：安洵杯 2019</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46481239/article/details/107915123">BUUCTF:[安洵杯 2019]easy misc_F10NA-CSDN博客</a></p>
-<p>文件：<code>attachment.rar</code></p>
-<br>
-
-<p>解压之后有三个文件（夹）</p>
-<p><img src="https://s3.ax1x.com/2020/11/28/D6MuvT.png"></p>
-<p><code>decode.zip</code>为加密文件，但有注释</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLAG IN ((√2524921X85÷5+2)÷15-1794)+NNULLULL,</span><br></pre></td></tr></table></figure>
-
-<p>算出来是7</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> (sqrt(<span class="number">2524921</span>)*<span class="number">85</span>/<span class="number">5</span>+<span class="number">2</span>)/<span class="number">15</span><span class="number">-1794</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>使用掩码攻击</p>
-<p><img src="https://s3.ax1x.com/2020/11/28/D6Qmod.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2019456NNULLULL,</span><br></pre></td></tr></table></figure>
-
-<p>解压后得到<code>decode.txt</code>，确认为<strong>字频隐写</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; dIW</span><br><span class="line">b &#x3D; sSD</span><br><span class="line">c &#x3D; adE </span><br><span class="line">d &#x3D; jVf</span><br><span class="line">e &#x3D; QW8</span><br><span class="line">f &#x3D; SA&#x3D;</span><br><span class="line">g &#x3D; jBt</span><br><span class="line">h &#x3D; 5RE</span><br><span class="line">i &#x3D; tRQ</span><br><span class="line">j &#x3D; SPA</span><br><span class="line">k &#x3D; 8DS</span><br><span class="line">l &#x3D; XiE</span><br><span class="line">m &#x3D; S8S</span><br><span class="line">n &#x3D; MkF</span><br><span class="line">o &#x3D; T9p</span><br><span class="line">p &#x3D; PS5</span><br><span class="line">q &#x3D; E&#x2F;S</span><br><span class="line">r &#x3D; -sd</span><br><span class="line">s &#x3D; SQW</span><br><span class="line">t &#x3D; obW</span><br><span class="line">u &#x3D; &#x2F;WS</span><br><span class="line">v &#x3D; SD9</span><br><span class="line">w &#x3D; cw&#x3D;</span><br><span class="line">x &#x3D; ASD</span><br><span class="line">y &#x3D; FTa</span><br><span class="line">z &#x3D; AE7</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p>而在<code>read</code>文件夹里有大量txt文件，里面有个<code>hint.txt</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hint:取前16个字符</span><br></pre></td></tr></table></figure>
-
-<p>但不知道是取哪个txt文件的前16高频字母</p>
-<p>使用foremost分离<code>小姐姐.png</code>，得到</p>
-<p><img src="https://s3.ax1x.com/2020/12/22/rsahbF.png"></p>
-<p>使用盲水印工具分离：<a target="_blank" rel="noopener" href="https://www.lizenghai.com/archives/72687.html">盲水印合成与解密</a></p>
-<blockquote>
-<p>安装不了opencv库，目前没有提取成功，据说是11.txt</p>
-</blockquote>
-<p>对11.txt进行字频分析：<a target="_blank" rel="noopener" href="http://www.aihanyu.org/cncorpus/CpsTongji.aspx">http://www.aihanyu.org/cncorpus/CpsTongji.aspx</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">序号	 字词		出现次数	   出现频率</span><br><span class="line">1		 		17203		17.4123</span><br><span class="line">2		e		8938		9.0467</span><br><span class="line">3		t		6278		6.3544</span><br><span class="line">4		a		5849		5.9202</span><br><span class="line">5		o		5372		5.4374</span><br><span class="line">6		n		4932		4.992</span><br><span class="line">7		r		4525		4.5801</span><br><span class="line">8		h		4460		4.5143</span><br><span class="line">9		s		4347		4.3999</span><br><span class="line">10		i		4291		4.3432</span><br><span class="line">11		d		3640		3.6843</span><br><span class="line">12		l		3339		3.3796</span><br><span class="line">13		u		2308		2.3361</span><br><span class="line">14		y		1903		1.9262</span><br><span class="line">15		g		1851		1.8735</span><br><span class="line">16		w		1733		1.7541</span><br><span class="line">17		c		1506		1.5243</span><br><span class="line">18		m		1491		1.5091</span><br><span class="line">19		.		1423		1.4403</span><br><span class="line">20		f		1246		1.2612</span><br><span class="line">21		　		1203		1.2176</span><br><span class="line">22		b		1199		1.2136</span><br><span class="line">23		,		1181		1.1954</span><br><span class="line">24		p		1109		1.1225</span><br><span class="line">25		k		931		    0.9423</span><br><span class="line">26		&quot;  866  	0.8765</span><br><span class="line">27		&#39;	710		0.7186</span><br><span class="line">28		H		603		0.6103</span><br><span class="line">29		v		592		0.5992</span><br><span class="line">30		-		450		0.4555</span><br><span class="line">31		D		352		0.3563</span><br><span class="line">32		I		281		0.2844</span><br><span class="line">33		T		250		0.253</span><br><span class="line">34		A		197		0.1994</span><br><span class="line">35		P		194		0.1964</span><br><span class="line">36		M		182		0.1842</span><br><span class="line">37		?		152		0.1538</span><br><span class="line">38		S		131		0.1326</span><br><span class="line">39		W		124		0.1255</span><br><span class="line">40		V		119		0.1204</span><br><span class="line">41		U		117		0.1184</span><br><span class="line">42		O		106		0.1073</span><br><span class="line">43		!		96		0.0972</span><br><span class="line">44		G		80		0.081</span><br><span class="line">45		E		76		0.0769</span><br><span class="line">46		x		76		0.0769</span><br><span class="line">47		B		74		0.0749</span><br><span class="line">48		j		74		0.0749</span><br><span class="line">49		Y		73		0.0739</span><br><span class="line">50		z		73		0.0739</span><br><span class="line">51		N		72		0.0729</span><br><span class="line">52		C		61		0.0617</span><br><span class="line">53		R		56		0.0567</span><br><span class="line">54		L		55		0.0557</span><br><span class="line">55		F		53		0.0536</span><br><span class="line">56		q		49		0.0496</span><br><span class="line">57		;		32		0.0324</span><br><span class="line">58		K		30		0.0304</span><br><span class="line">59		:		22		0.0223</span><br><span class="line">60		(		14		0.0142</span><br><span class="line">61		)		14		0.0142</span><br><span class="line">62		J		13		0.0132</span><br><span class="line">63		1		5		0.0051</span><br><span class="line">64		3		3		0.003</span><br><span class="line">65		4		3		0.003</span><br><span class="line">66		Q		3		0.003</span><br><span class="line">67		2		2		0.002</span><br><span class="line">68		Z		2		0.002</span><br><span class="line">69		~		1		0.001</span><br><span class="line">70		0		1		0.001</span><br><span class="line">71		7		1		0.001</span><br></pre></td></tr></table></figure>
-
-<p>也可以使用脚本进行字频分析</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">file = open(<span class="string">&#x27;E:/11.txt&#x27;</span>)</span><br><span class="line">line = file.readlines()</span><br><span class="line">file.seek(<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line">result = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">97</span>,<span class="number">123</span>):</span><br><span class="line">	count = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> line:</span><br><span class="line">		find_line = re.findall(chr(i),j)</span><br><span class="line">		count += len(find_line)</span><br><span class="line">	result[chr(i)] = count</span><br><span class="line">res = sorted(result.items(),key=<span class="keyword">lambda</span> item:item[<span class="number">1</span>],reverse=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">num = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> res:</span><br><span class="line">		print(<span class="string">&#x27;频数第&#123;0&#125;: &#x27;</span>.format(num),x)</span><br><span class="line">		num += <span class="number">1</span> </span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p>前16高频字符为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">etaonrhsidluygw</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QW8obWdIWT9pMkF-sd5RESQWtRQjVfXiE&#x2F;WSFTajBtcw&#x3D;</span><br></pre></td></tr></table></figure>
-
-<p>编码后缀符号为<code>=</code>，猜测是base64</p>
-<p>但标准base64只有64个字符（英文大小写、数字和+、/）以及用作后缀等号，并没有<code>r=-sd</code>的<code>-</code>，查了下发现题目出错了</p>
-<p><img src="https://s3.ax1x.com/2020/12/23/ryWqeJ.png"></p>
-<p>所以是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QW8obWdIWT9pMkFSQWtRQjVfXiE&#x2F;WSFTajBtcw&#x3D;</span><br></pre></td></tr></table></figure>
-
-<p>base64解码后得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ao(mgHY?i2ARAkQB5_^!?Y!Sj0ms</span><br></pre></td></tr></table></figure>
-
-<p>base85解码后得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;have_a_good_day1&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="耗子尾汁"><a href="#耗子尾汁" class="headerlink" title="耗子尾汁"></a>耗子尾汁</h2><p>题目：SWPUCTF 2020</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/LEOGG321/archive/2004/01/13/14094598.html">SWPUCTF2020 Misc题解</a></p>
-<p>文件：<code>hzwz.gif</code></p>
-<p><img src="https://s3.ax1x.com/2020/12/23/ryfyfx.png"></p>
-<p>binwalk提取一下，得到4个文件</p>
-<p><img src="https://s3.ax1x.com/2020/12/23/ryhn41.png"></p>
-<p><code>flag.txt</code>没有flag</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;Th1s_1s_fa1se_f1ag&#125;</span><br><span class="line">上来就分离我合成的gif  这好吗？这不好！</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">啪的一下  很快啊  我全都防住了</span><br></pre></td></tr></table></figure>
-
-<p><code>2^4_2^5_2^6.mp4</code>为闪电五连鞭的视频，中间有一帧画面有东西</p>
-<blockquote>
-<p><code>63E3A.zip</code>和<code>63F5F.zip</code>解压出来就是<code>2^4_2^5_2^6.mp4</code></p>
-</blockquote>
-<p><img src="https://s3.ax1x.com/2020/12/23/ry4BJ1.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c2lnbl9pbg&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
-
-<p>base64解码为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sign_in</span><br></pre></td></tr></table></figure>
-
-<p>把<code>2^4_2^5_2^6.mp4</code>拖到010editor，发现文件尾有个PK开头的压缩包，复制另存为1.zip</p>
-<blockquote>
-<p>也可以用kali自带的binwalk提取</p>
-</blockquote>
-<p><img src="https://s3.ax1x.com/2020/12/23/rcAtr6.png"></p>
-<p>解压需要密码，将<code>sign_in</code>作为密码，解压得到19_20.txt</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">R1pCVE9OUlhHVTNES05SWkdZWVRNUVJYSEEzVEtOUlVHNFpUT09KWEdFM0RLTlJZRzRaVE9RSlhHRTNEUU5aWkdaQkRNTlpXRzQzVEdOWlpHNDRUTVFaV0lJM1RNTlpXR1k0UT09PT0&#x3D;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;The last layer is the single table replacement password</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>翻译：最后一层是单表替换密码</p>
-</blockquote>
-<p>base64解码得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GZBTONRXGU3DKNRZGYYTMQRXHA3TKNRUG4ZTOOJXGE3DKNRYG4ZTOQJXGE3DQNZZGZBDMNZWG43TGNZZG44TMQZWII3TMNZWGY4Q&#x3D;&#x3D;&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
-
-<p>base32解码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6C76756569616B7875647379716568737A7168796B67677379796C6B767669</span><br></pre></td></tr></table></figure>
-
-<p>十六进制转字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvueiakxudsyqehszqhykggsyylkvvi</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p><code>19_20.txt</code>说最后一层是单表替换密码，而仿射密码是一种表单代换密码</p>
-<p>根据文件名，设a=19，b=20</p>
-<p>使用脚本进行仿射密码解密</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&quot;lvueiakxudsyqehszqhykggsyylkvvi&quot;</span>.upper()</span><br><span class="line">a = <span class="number">19</span></span><br><span class="line">b = <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        k = a //b</span><br><span class="line">        remainder = a % b</span><br><span class="line">        x1, y1 = get(b, remainder)</span><br><span class="line">        x, y =y1, x1 - k * y1</span><br><span class="line">    <span class="keyword">return</span> x, y</span><br><span class="line"></span><br><span class="line">x, y = get(a, <span class="number">26</span>)</span><br><span class="line">a1 = x % <span class="number">26</span></span><br><span class="line"> </span><br><span class="line">l= len(s)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(l):</span><br><span class="line">    cipher = a1 * (ord(s[i])- <span class="number">65</span> - b) % <span class="number">26</span></span><br><span class="line">    res=chr(cipher + <span class="number">65</span>)</span><br><span class="line">    print(res.lower(), end=<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>得到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flagyouhavesignedinsuccessfully</span><br></pre></td></tr></table></figure>
-
-<p>根据题目提示：flag格式flag{xxx_xxxx_xxxxxx_xx_xxxxxxxxxxxx}</p>
-<p>加上下划线，得到flag</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;you_have_signed_in_successfully&#125;</span><br></pre></td></tr></table></figure>
-
-<p>附：</p>
-<p>仿射密码解密原始脚本：<a target="_blank" rel="noopener" href="https://blog.csdn.net/x_yhy/article/details/83756908">仿射密码解密（Affine Cipher）</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#仿射密码解密</span></span><br><span class="line"><span class="comment">#改进欧几里得算法求线性方程的x与y</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">a, b</span>):</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        k = a //b</span><br><span class="line">        remainder = a % b</span><br><span class="line">        x1, y1 = get(b, remainder)</span><br><span class="line">        x, y =y1, x1 - k * y1</span><br><span class="line">    <span class="keyword">return</span> x, y</span><br><span class="line"> </span><br><span class="line">s = input(<span class="string">&quot;请输入解密字符：&quot;</span>).upper()</span><br><span class="line">a = int(input(<span class="string">&quot;请输入a：&quot;</span>))</span><br><span class="line">b = int(input(<span class="string">&quot;请输入b：&quot;</span>))</span><br><span class="line"> </span><br><span class="line"><span class="comment">#求a关于26的乘法逆元</span></span><br><span class="line">x, y = get(a, <span class="number">26</span>)</span><br><span class="line">a1 = x % <span class="number">26</span></span><br><span class="line"> </span><br><span class="line">l= len(s)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(l):</span><br><span class="line">    cipher = a1 * (ord(s[i])- <span class="number">65</span> - b) % <span class="number">26</span></span><br><span class="line">    res=chr(cipher + <span class="number">65</span>)</span><br><span class="line">    print(res, end=<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure> 
+</ul> 
+      <a class="article-more-link" href="/2020/12/22/%E5%A4%8D%E7%8E%B03%E9%81%93misc%E9%A2%98/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -485,6 +189,63 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/" rel="tag">misc</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-无参数RCE"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/12/03/%E6%97%A0%E5%8F%82%E6%95%B0RCE/"
+    >无参数RCE</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/12/03/%E6%97%A0%E5%8F%82%E6%95%B0RCE/" class="article-date">
+  <time datetime="2020-12-02T16:00:00.000Z" itemprop="datePublished">2020-12-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>无参数RCE：就是只使用函数，且函数不能带有参数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $_GET[<span class="string">&#x27;code&#x27;</span>])) &#123;    </span><br><span class="line">    <span class="keyword">eval</span>($_GET[<span class="string">&#x27;code&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure> 
+      <a class="article-more-link" href="/2020/12/03/%E6%97%A0%E5%8F%82%E6%95%B0RCE/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
 
     </footer>
   </div>
@@ -664,6 +425,75 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-PHP 弱类型比较问题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/10/29/PHP%20%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/"
+    >PHP 弱类型比较问题</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/10/29/PHP%20%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-10-29T15:00:00.000Z" itemprop="datePublished">2020-10-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <ul>
+<li><p>字符串和数字比较时，会先把字符串转换为数字，不能转换为数字的字符串或null，被转换为0。</p>
+</li>
+<li><p>bool true和任何比较都相等，除了0和false，因为0认为是bool false。</p>
+</li>
+<li><p>md5或者sha不能加密数组，所以在加密数组的时候会返回false。</p>
+</li>
+<li><p>“0x”开头跟数字的字符串（例如”0x1e240”）会被当作16进制数去比较。</p>
+</li>
+<li><p>只要是以0e开头，后面为数字的字符串和字符串0比较值都是相等的，即<code>0e\d+</code>的字符串 == ‘0’ 为true。</p>
+</li>
+<li><p>PHP5.3以上版本的strcmp()存在漏洞，只要$_GET[‘password’]是一个数组或者一个object即可绕过。</p>
+</li>
+</ul> 
+      <a class="article-more-link" href="/2020/10/29/PHP%20%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
 
     </footer>
   </div>
