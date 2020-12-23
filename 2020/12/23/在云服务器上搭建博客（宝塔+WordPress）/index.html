@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    其它 |  
+    在云服务器上搭建博客（宝塔+WordPress） |  
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -43,84 +43,230 @@
       
     <main class="content on">
       <section class="outer">
-  
-  <article class="articles">
+  <article
+  id="post-在云服务器上搭建博客（宝塔+WordPress）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">其它</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2020" class="archive-year">2020</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/23/%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%AE%9D%E5%A1%94+WordPress%EF%BC%89/" class="archive-article-date">
-  <time datetime="2020-12-22T16:00:00.000Z" itemprop="datePublished">12/23</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/12/23/%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%AE%9D%E5%A1%94+WordPress%EF%BC%89/"
-    >在云服务器上搭建博客（宝塔+WordPress）</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  在云服务器上搭建博客（宝塔+WordPress）
+</h1>
  
 
     </header>
-    
-      
+     
+    <div class="article-meta">
+      <a href="/2020/12/23/%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%AE%9D%E5%A1%94+WordPress%EF%BC%89/" class="article-date">
+  <time datetime="2020-12-22T16:00:00.000Z" itemprop="datePublished">2020-12-23</time>
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
   </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">568</span>
+        </span>
+    </span>
 
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/10/29/%E4%B8%80%E9%81%93ACM%E6%B5%8B%E8%AF%95%E8%B5%9B%E7%9A%84%E9%A2%98%E7%9B%AE/" class="archive-article-date">
-  <time datetime="2020-10-29T11:00:00.000Z" itemprop="datePublished">10/29</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/10/29/%E4%B8%80%E9%81%93ACM%E6%B5%8B%E8%AF%95%E8%B5%9B%E7%9A%84%E9%A2%98%E7%9B%AE/"
-    >一道ACM测试赛的题目</a> 
-</h2>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2 分钟</span>
+        </span>
+    </span>
+</div>
  
-
-    </header>
-    
+    </div>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%85%B6%E5%AE%83/">其它</a>
-  </div>
+    <div class="tocbot"></div>
 
-    
-    
-  </div>
-</article>
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>准备：</p>
+<p>一台能上网的电脑</p>
+<p>阿里云服务器</p>
+<p>FinalShell</p>
+<a id="more"></a>
+
+<br>
+
+<p>电脑系统：win10</p>
+<p>阿里云服务器系统镜像：CentOS 7.6</p>
+<p>FinalShell版本：3.6.3</p>
+<br>
+
+<h2 id="连接云服务器"><a href="#连接云服务器" class="headerlink" title="连接云服务器"></a>连接云服务器</h2><p>用FinalShell连接云服务器（云服务器已实例）</p>
+<p><img src="https://s3.ax1x.com/2020/12/23/rcMcsH.png"></p>
+<p>点击<code>SSH连接(Linux)</code></p>
+<p>名称随意，主机填云服务器的公网IP，用户名填root，密码填云服务器实例密码，点击确定</p>
+<p><img src="https://s3.ax1x.com/2020/12/23/rcMbLj.png"></p>
+<p>然后双击即可连接</p>
+<br>
+
+<h2 id="安装宝塔Linux面板"><a href="#安装宝塔Linux面板" class="headerlink" title="安装宝塔Linux面板"></a>安装宝塔Linux面板</h2><p><a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-19376-1-1.html">宝塔Linux面板安装教程 - 2020年12月2日更新 - 7.4.6正式版</a></p>
+<p>由于系统是CentOS的，复制CentOS安装指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<p>提示是否安装宝塔面板，输入 <code>y</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Do you want to install Bt-Panel to the &#x2F;www directory now?(y&#x2F;n):y</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后记录下外网面板地址以及username和password</p>
+<p><img src="https://s3.ax1x.com/2020/12/23/rcQLcD.png"></p>
+<br>
+
+<h2 id="开通对应端口"><a href="#开通对应端口" class="headerlink" title="开通对应端口"></a>开通对应端口</h2><p>点击左侧的<code>实例</code>，点击对应的服务器</p>
+<p>点击左侧的<code>本实例安全组</code>，点击<code>配置规则</code></p>
+<p>点击<code>快速创建规则</code>，开通8888以及常用端口</p>
+<p><img src="https://s3.ax1x.com/2020/12/23/rclgUI.png"></p>
+<br>
+
+<h2 id="创建站点"><a href="#创建站点" class="headerlink" title="创建站点"></a>创建站点</h2><p>访问外网面板地址，账号输入username，密码输入password</p>
+<p>点击左边的<code>LNMP(推荐)</code>的<code>一键安装</code></p>
+<p>安装完成后添加站点</p>
+<p><img src="https://s3.ax1x.com/2020/12/24/rc1TSK.png"></p>
+<p>域名可以用IP代替，根目录自己定义，添加MySQL数据库</p>
+<p>点击提交即可</p>
+<br>
+
+<h2 id="安装WordPress"><a href="#安装WordPress" class="headerlink" title="安装WordPress"></a>安装WordPress</h2><p>安装WordPress官网：<a target="_blank" rel="noopener" href="https://cn.wordpress.org/download/">https://cn.wordpress.org/download/</a></p>
+<p>下载WordPress后上传到宝塔Linux面板</p>
+<p><img src="https://s3.ax1x.com/2020/12/24/rc39l8.png"></p>
+<p>解压到blog目录下</p>
+<blockquote>
+<p>直接解压的话是解压到wordpress文件夹里，复制粘贴到blog目录下即可</p>
+</blockquote>
+<p>访问域名进行安装，点击<code>现在就开始！</code></p>
+<p>数据库名和用户名都是之前生成的数据库名，密码为数据库密码</p>
+<blockquote>
+<p>可在宝塔Linux面板点击左侧的数据库查看</p>
+</blockquote>
+<p>输入完成后点击提交</p>
+<p>填写信息页面，站点标题随意，用户名和密码自己设置，电子邮件写自己的邮箱</p>
+<p>点击<code>安装WordPress</code>，重新输入账号密码登录</p>
+<p>此时进入的是WordPress的后台，可以在后台进行博客主题等相关设置</p>
+<p>访问IP即可看到博客了，至此博客搭建完成</p>
+<p><img src="https://s3.ax1x.com/2020/12/24/rc3D7d.png"></p>
+ 
+      <!-- reward -->
       
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
       
     </div>
-  </div>
-  
-  
+    
 
-  
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+
+<style>a{TEXT-DECORATION:none}</style>
+
+<div class="share-btn">
+	<a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin" >
+		<span class="share-sns share-outer">
+			<i class="ri-share-forward-line"></i>
+			分享
+        </span>
+	</a>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://flag2020.top/2020/12/23/%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%AE%9D%E5%A1%94+WordPress%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E5%AE%83/" rel="tag">其它</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/12/22/%E5%A4%8D%E7%8E%B03%E9%81%93misc%E9%A2%98/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">复现3道misc题</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "LPopDsE5xqAMk1vc3LFLtBKM-9Nh9j0Va",
+    app_key: "FJFDwtlxVYM7om71IEGJoidS",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+     
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -274,6 +420,23 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">

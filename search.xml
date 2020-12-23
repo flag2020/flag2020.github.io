@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>在云服务器上搭建博客（宝塔+WordPress）</title>
+      <link href="2020/12/23/%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%AE%9D%E5%A1%94+WordPress%EF%BC%89/"/>
+      <url>2020/12/23/%E5%9C%A8%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%AE%9D%E5%A1%94+WordPress%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>准备：</p><p>一台能上网的电脑</p><p>阿里云服务器</p><p>FinalShell</p><a id="more"></a><br><p>电脑系统：win10</p><p>阿里云服务器系统镜像：CentOS 7.6</p><p>FinalShell版本：3.6.3</p><br><h2 id="连接云服务器"><a href="#连接云服务器" class="headerlink" title="连接云服务器"></a>连接云服务器</h2><p>用FinalShell连接云服务器（云服务器已实例）</p><p><img src="https://s3.ax1x.com/2020/12/23/rcMcsH.png"></p><p>点击<code>SSH连接(Linux)</code></p><p>名称随意，主机填云服务器的公网IP，用户名填root，密码填云服务器实例密码，点击确定</p><p><img src="https://s3.ax1x.com/2020/12/23/rcMbLj.png"></p><p>然后双击即可连接</p><br><h2 id="安装宝塔Linux面板"><a href="#安装宝塔Linux面板" class="headerlink" title="安装宝塔Linux面板"></a>安装宝塔Linux面板</h2><p><a href="https://www.bt.cn/bbs/thread-19376-1-1.html">宝塔Linux面板安装教程 - 2020年12月2日更新 - 7.4.6正式版</a></p><p>由于系统是CentOS的，复制CentOS安装指令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure><p>提示是否安装宝塔面板，输入 <code>y</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Do you want to install Bt-Panel to the &#x2F;www directory now?(y&#x2F;n):y</span><br></pre></td></tr></table></figure><p>安装完成后记录下外网面板地址以及username和password</p><p><img src="https://s3.ax1x.com/2020/12/23/rcQLcD.png"></p><br><h2 id="开通对应端口"><a href="#开通对应端口" class="headerlink" title="开通对应端口"></a>开通对应端口</h2><p>点击左侧的<code>实例</code>，点击对应的服务器</p><p>点击左侧的<code>本实例安全组</code>，点击<code>配置规则</code></p><p>点击<code>快速创建规则</code>，开通8888以及常用端口</p><p><img src="https://s3.ax1x.com/2020/12/23/rclgUI.png"></p><br><h2 id="创建站点"><a href="#创建站点" class="headerlink" title="创建站点"></a>创建站点</h2><p>访问外网面板地址，账号输入username，密码输入password</p><p>点击左边的<code>LNMP(推荐)</code>的<code>一键安装</code></p><p>安装完成后添加站点</p><p><img src="https://s3.ax1x.com/2020/12/24/rc1TSK.png"></p><p>域名可以用IP代替，根目录自己定义，添加MySQL数据库</p><p>点击提交即可</p><br><h2 id="安装WordPress"><a href="#安装WordPress" class="headerlink" title="安装WordPress"></a>安装WordPress</h2><p>安装WordPress官网：<a href="https://cn.wordpress.org/download/">https://cn.wordpress.org/download/</a></p><p>下载WordPress后上传到宝塔Linux面板</p><p><img src="https://s3.ax1x.com/2020/12/24/rc39l8.png"></p><p>解压到blog目录下</p><blockquote><p>直接解压的话是解压到wordpress文件夹里，复制粘贴到blog目录下即可</p></blockquote><p>访问域名进行安装，点击<code>现在就开始！</code></p><p>数据库名和用户名都是之前生成的数据库名，密码为数据库密码</p><blockquote><p>可在宝塔Linux面板点击左侧的数据库查看</p></blockquote><p>输入完成后点击提交</p><p>填写信息页面，站点标题随意，用户名和密码自己设置，电子邮件写自己的邮箱</p><p>点击<code>安装WordPress</code>，重新输入账号密码登录</p><p>此时进入的是WordPress的后台，可以在后台进行博客主题等相关设置</p><p>访问IP即可看到博客了，至此博客搭建完成</p><p><img src="https://s3.ax1x.com/2020/12/24/rc3D7d.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 其它 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 其它 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>复现3道misc题</title>
       <link href="2020/12/22/%E5%A4%8D%E7%8E%B03%E9%81%93misc%E9%A2%98/"/>
       <url>2020/12/22/%E5%A4%8D%E7%8E%B03%E9%81%93misc%E9%A2%98/</url>
