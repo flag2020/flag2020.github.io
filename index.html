@@ -139,6 +139,65 @@
     
     
     <article
+  id="post-两种CTF中特殊盲注的总结"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/02/04/%E4%B8%A4%E7%A7%8DCTF%E4%B8%AD%E7%89%B9%E6%AE%8A%E7%9B%B2%E6%B3%A8%E7%9A%84%E6%80%BB%E7%BB%93/"
+    >两种CTF中特殊盲注的总结</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/02/04/%E4%B8%A4%E7%A7%8DCTF%E4%B8%AD%E7%89%B9%E6%AE%8A%E7%9B%B2%E6%B3%A8%E7%9A%84%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2021-02-03T16:00:00.000Z" itemprop="datePublished">2021-02-04</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>文章首发合天：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/2CShzOiY2GJ5tkyEerMqcw">两种CTF中特殊盲注的总结</a></strong></p>
+<br>
+
+<p>Blind SQL（盲注）是SQL注入攻击的其中一种。在sql注入过程中，sql语句执行后数据不会回显到前端页面，此时，我们需要利用一些方法进行判断或者尝试，这个过程称之为盲注。</p> 
+      <a class="article-more-link" href="/2021/02/04/%E4%B8%A4%E7%A7%8DCTF%E4%B8%AD%E7%89%B9%E6%AE%8A%E7%9B%B2%E6%B3%A8%E7%9A%84%E6%80%BB%E7%BB%93/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-在云服务器上搭建博客（宝塔+WordPress）"
   class="article article-type-post"
   itemscope
@@ -680,67 +739,6 @@
 </article>
 
     
-    <article
-  id="post-文件上传漏洞"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/10/17/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"
-    >文件上传漏洞</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/10/17/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/" class="article-date">
-  <time datetime="2020-10-16T16:00:00.000Z" itemprop="datePublished">2020-10-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">信息安全</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>一些web应用程序中允许上传图片，文本或者其他资源到指定的位置，文件上传漏洞就是利用这些可以上传的地方将恶意代码植入到服务器中，再通过url去访问以执行代码。</p>
-<p>通常造成文件上传漏洞的原因是：对于上传文件的后缀名（扩展名），类型，以及内容没有做好严格的限制等等一些原因。</p>
-<blockquote>
-<p>文件上传漏洞是指由于程序员未对上传的文件进行严格的验证和过滤，而导致的用户可以越过其本身权限向服务器上上传可执行的动态脚本文件。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。</p>
-<p>这种攻击方式是最为直接和有效的，“文件上传”本身没有问题，有问题的是文件上传后，服务器怎么处理、解释文件。如果服务器的处理逻辑做的不够安全，则会导致严重的后果。</p>
-</blockquote> 
-      <a class="article-more-link" href="/2020/10/17/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
   </article>
   
 
@@ -758,7 +756,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2020
+        2020-2021
         <i class="ri-heart-fill heart_icon"></i> flag2020
       </li>
     </ul>
