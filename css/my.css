@@ -1,4 +1,11 @@
 /* Here is your custom css styles. */
+/* 页脚居中对齐 */
 #mycss-footer-center{
 	width: 100%;
+}
+#mycss-404-description{
+	color: #FFF;
+	word-spacing: 10px;
+	font-size: 40px;
+	font-weight: 600;
 }
