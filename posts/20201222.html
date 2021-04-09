@@ -1,0 +1,1538 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="复现3道misc题, 潜心">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>复现3道misc题 | 潜心</title>
+    <link rel="icon" type="image/png" href="/medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">潜心</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>CTF</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags/web/">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Web</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/misc/">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Misc</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/crypto/">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Crypto</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/tags/writeup/">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Write up</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/Notes/" class="waves-effect waves-light">
+      
+      <i class="fas fa-graduation-cap" style="zoom: 0.6;"></i>
+      
+      <span>学习笔记</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">潜心</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			CTF
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags/web/ " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Web</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags/misc/ " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Misc</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags/crypto/ " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Crypto</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/tags/writeup/ " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>Write up</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/Notes/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-graduation-cap"></i>
+			
+			学习笔记
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">复现3道misc题</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/misc/">
+                                <span class="chip bg-color">misc</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/CTF/" class="post-category">
+                                CTF
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-12-22
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>CISCN2020 &amp; 安洵杯2019 &amp; SWPUCTF2020</p>
+<span id="more"></span>
+
+<p><strong>目录</strong></p>
+<ul>
+<li>CISCN 2020 复赛(华南赛区) —— hidden_secret    </li>
+<li>安洵杯 2019 —— easy misc    </li>
+<li>SWPUCTF 2020 —— 耗子尾汁    </li>
+</ul>
+<br>
+
+<h2 id="hidden-secret"><a href="#hidden-secret" class="headerlink" title="hidden_secret"></a>hidden_secret</h2><p>题目：CISCN 2020 复赛（华南赛区）</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Lziyang/p/13741751.html">CISCN 复赛(华南赛区)部分wp - 迷失的老鼠 - 博客园 (cnblogs.com)</a></p>
+<p>文件：<code>flag1.zip</code></p>
+<br>
+
+<p><code>flag1.zip</code>解压出来是一张图片（<code>hahah.jpg</code>）和一个压缩包（<code>hidden_secret.zip</code>）</p>
+<p>图片好像没什么东西，压缩包解密需要密码</p>
+<p>打开<code>hidden_secret.zip</code>，发现加密的文件里面也有<code>hahah.jpg</code>，而且crc校验值一样</p>
+<p><img src="https://s3.ax1x.com/2020/11/15/DP4ciq.png"></p>
+<p>用ARCHPR进行明文攻击</p>
+<p><img src="https://s3.ax1x.com/2020/11/15/DP5Al8.png"></p>
+<p><img src="https://s3.ax1x.com/2020/11/15/DP4OSK.png"></p>
+<p>拿到了<code>hidden_secret.zip</code>的解压密码：</p>
+<pre class="line-numbers language-none"><code class="language-none">pb-1&#96;;ks<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>解压后又是那个狗头，还有个<code>hidden_secret.rar</code>，继续解压</p>
+<p>得到<code>key.gif</code></p>
+<p>中途看到有一帧有二维码</p>
+<p>用PS打开，在图层34查看图层</p>
+<p><img src="https://s3.ax1x.com/2020/11/15/DP5v90.png"></p>
+<p>扫码得到：</p>
+<pre class="line-numbers language-none"><code class="language-none">flag&#123;ni_chou_sha&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>提交后发现不对😡</p>
+<br>
+
+<p>用stegsolve分析图像信息，可以发现这个gif动图的间隔时间分为10和20两种，考虑gif时间隐写</p>
+<p>将所有间隔时间分离出来</p>
+<pre class="line-numbers language-none"><code class="language-none">identify -format &quot;%T&quot; key.gif<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://s3.ax1x.com/2020/11/15/DPTg74.png"></p>
+<p>得到</p>
+<pre class="line-numbers language-none"><code class="language-none">1020201020201020102010101020101010102020102010201020102020202020102020101020201010202020101020201020202010201010<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将<code>10</code>转化为<code>0</code>，<code>20</code>转化为<code>1</code></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"1020201020201020102010101020101010102020102010201020102020202020102020101020201010202020101020201020202010201010"</span><span class="token punctuation">;</span>
+
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'10'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'0'</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'20'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'1'</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>得到</p>
+<pre class="line-numbers language-none"><code class="language-none">01101101010001000011010101011111011001100111001101110100<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将<a target="_blank" rel="noopener" href="http://www.ah888.org/wenben_binarystr.html">二进制转为字符串</a>，得到</p>
+<pre class="line-numbers language-none"><code class="language-none">mD5_fst<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>md5加密后得到</p>
+<pre class="line-numbers language-none"><code class="language-none">046cb65e60a4774c76b4f99371e66f0d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>根据题目提示ntfs，查看文件夹隐藏文件，在hidden_secret文件夹中发现隐藏文件</p>
+<p><img src="https://s3.ax1x.com/2020/11/15/DPHwQ0.png"></p>
+<p>导出后重命名为<code>1.rar</code></p>
+<p>解压密码为上面的MD5</p>
+<p>解压得到<code>flag.txt</code></p>
+<pre class="line-numbers language-none"><code class="language-none">flag&#123;f935c5d0470757a3d2f3ee7467366f4e&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<br>
+
+<h2 id="easy-misc"><a href="#easy-misc" class="headerlink" title="easy misc"></a>easy misc</h2><p>题目：安洵杯 2019</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46481239/article/details/107915123">BUUCTF:[安洵杯 2019]easy misc_F10NA-CSDN博客</a></p>
+<p>文件：<code>attachment.rar</code></p>
+<br>
+
+<p>解压之后有三个文件（夹）</p>
+<p><img src="https://s3.ax1x.com/2020/11/28/D6MuvT.png"></p>
+<p><code>decode.zip</code>为加密文件，但有注释</p>
+<pre class="line-numbers language-none"><code class="language-none">FLAG IN ((√2524921X85÷5+2)÷15-1794)+NNULLULL,<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>算出来是7</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">2524921</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">85</span><span class="token operator">/</span><span class="token number">5</span><span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">15</span><span class="token operator">-</span><span class="token number">1794</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>使用掩码攻击</p>
+<p><img src="https://s3.ax1x.com/2020/11/28/D6Qmod.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">2019456NNULLULL,<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>解压后得到<code>decode.txt</code>，确认为<strong>字频隐写</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">a &#x3D; dIW
+b &#x3D; sSD
+c &#x3D; adE 
+d &#x3D; jVf
+e &#x3D; QW8
+f &#x3D; SA&#x3D;
+g &#x3D; jBt
+h &#x3D; 5RE
+i &#x3D; tRQ
+j &#x3D; SPA
+k &#x3D; 8DS
+l &#x3D; XiE
+m &#x3D; S8S
+n &#x3D; MkF
+o &#x3D; T9p
+p &#x3D; PS5
+q &#x3D; E&#x2F;S
+r &#x3D; -sd
+s &#x3D; SQW
+t &#x3D; obW
+u &#x3D; &#x2F;WS
+v &#x3D; SD9
+w &#x3D; cw&#x3D;
+x &#x3D; ASD
+y &#x3D; FTa
+z &#x3D; AE7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<br>
+
+<p>而在<code>read</code>文件夹里有大量txt文件，里面有个<code>hint.txt</code></p>
+<pre class="line-numbers language-none"><code class="language-none">hint:取前16个字符<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>但不知道是取哪个txt文件的前16高频字母</p>
+<p>使用foremost分离<code>小姐姐.png</code>，得到</p>
+<p><img src="https://s3.ax1x.com/2020/12/22/rsahbF.png"></p>
+<p>使用盲水印工具分离：<a target="_blank" rel="noopener" href="https://www.lizenghai.com/archives/72687.html">盲水印合成与解密</a></p>
+<blockquote>
+<p>安装不了opencv库，目前没有提取成功，据说是11.txt</p>
+</blockquote>
+<p>对11.txt进行字频分析：<a target="_blank" rel="noopener" href="http://www.aihanyu.org/cncorpus/CpsTongji.aspx">http://www.aihanyu.org/cncorpus/CpsTongji.aspx</a></p>
+<pre class="line-numbers language-none"><code class="language-none">序号	 字词		出现次数	   出现频率
+1		 		17203		17.4123
+2		e		8938		9.0467
+3		t		6278		6.3544
+4		a		5849		5.9202
+5		o		5372		5.4374
+6		n		4932		4.992
+7		r		4525		4.5801
+8		h		4460		4.5143
+9		s		4347		4.3999
+10		i		4291		4.3432
+11		d		3640		3.6843
+12		l		3339		3.3796
+13		u		2308		2.3361
+14		y		1903		1.9262
+15		g		1851		1.8735
+16		w		1733		1.7541
+17		c		1506		1.5243
+18		m		1491		1.5091
+19		.		1423		1.4403
+20		f		1246		1.2612
+21		　		1203		1.2176
+22		b		1199		1.2136
+23		,		1181		1.1954
+24		p		1109		1.1225
+25		k		931		    0.9423
+26		&quot;  866  	0.8765
+27		&#39;	710		0.7186
+28		H		603		0.6103
+29		v		592		0.5992
+30		-		450		0.4555
+31		D		352		0.3563
+32		I		281		0.2844
+33		T		250		0.253
+34		A		197		0.1994
+35		P		194		0.1964
+36		M		182		0.1842
+37		?		152		0.1538
+38		S		131		0.1326
+39		W		124		0.1255
+40		V		119		0.1204
+41		U		117		0.1184
+42		O		106		0.1073
+43		!		96		0.0972
+44		G		80		0.081
+45		E		76		0.0769
+46		x		76		0.0769
+47		B		74		0.0749
+48		j		74		0.0749
+49		Y		73		0.0739
+50		z		73		0.0739
+51		N		72		0.0729
+52		C		61		0.0617
+53		R		56		0.0567
+54		L		55		0.0557
+55		F		53		0.0536
+56		q		49		0.0496
+57		;		32		0.0324
+58		K		30		0.0304
+59		:		22		0.0223
+60		(		14		0.0142
+61		)		14		0.0142
+62		J		13		0.0132
+63		1		5		0.0051
+64		3		3		0.003
+65		4		3		0.003
+66		Q		3		0.003
+67		2		2		0.002
+68		Z		2		0.002
+69		~		1		0.001
+70		0		1		0.001
+71		7		1		0.001<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>也可以使用脚本进行字频分析</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
+
+<span class="token builtin">file</span> <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'E:/11.txt'</span><span class="token punctuation">)</span>
+line <span class="token operator">=</span> <span class="token builtin">file</span><span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token builtin">file</span><span class="token punctuation">.</span>seek<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token builtin">file</span><span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+result <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">97</span><span class="token punctuation">,</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	count <span class="token operator">=</span> <span class="token number">0</span>
+	<span class="token keyword">for</span> j <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+		find_line <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span>
+		count <span class="token operator">+=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>find_line<span class="token punctuation">)</span>
+	result<span class="token punctuation">[</span><span class="token builtin">chr</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> count
+res <span class="token operator">=</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> item<span class="token punctuation">:</span>item<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+num <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">for</span> x <span class="token keyword">in</span> res<span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'频数第&#123;0&#125;: '</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">,</span>x<span class="token punctuation">)</span>
+		num <span class="token operator">+=</span> <span class="token number">1</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<br>
+
+<p>前16高频字符为</p>
+<pre class="line-numbers language-none"><code class="language-none">etaonrhsidluygw<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">QW8obWdIWT9pMkF-sd5RESQWtRQjVfXiE&#x2F;WSFTajBtcw&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>编码后缀符号为<code>=</code>，猜测是base64</p>
+<p>但标准base64只有64个字符（英文大小写、数字和+、/）以及用作后缀等号，并没有<code>r=-sd</code>的<code>-</code>，查了下发现题目出错了</p>
+<p><img src="https://s3.ax1x.com/2020/12/23/ryWqeJ.png"></p>
+<p>所以是</p>
+<pre class="line-numbers language-none"><code class="language-none">QW8obWdIWT9pMkFSQWtRQjVfXiE&#x2F;WSFTajBtcw&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>base64解码后得到</p>
+<pre class="line-numbers language-none"><code class="language-none">Ao(mgHY?i2ARAkQB5_^!?Y!Sj0ms<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>base85解码后得到</p>
+<pre class="line-numbers language-none"><code class="language-none">flag&#123;have_a_good_day1&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<br>
+
+<h2 id="耗子尾汁"><a href="#耗子尾汁" class="headerlink" title="耗子尾汁"></a>耗子尾汁</h2><p>题目：SWPUCTF 2020</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/LEOGG321/archive/2004/01/13/14094598.html">SWPUCTF2020 Misc题解</a></p>
+<p>文件：<code>hzwz.gif</code></p>
+<p><img src="https://s3.ax1x.com/2020/12/23/ryfyfx.png"></p>
+<p>binwalk提取一下，得到4个文件</p>
+<p><img src="https://s3.ax1x.com/2020/12/23/ryhn41.png"></p>
+<p><code>flag.txt</code>没有flag</p>
+<pre class="line-numbers language-none"><code class="language-none">flag&#123;Th1s_1s_fa1se_f1ag&#125;
+上来就分离我合成的gif  这好吗？这不好！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+啪的一下  很快啊  我全都防住了<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>2^4_2^5_2^6.mp4</code>为闪电五连鞭的视频，中间有一帧画面有东西</p>
+<blockquote>
+<p><code>63E3A.zip</code>和<code>63F5F.zip</code>解压出来就是<code>2^4_2^5_2^6.mp4</code></p>
+</blockquote>
+<p><img src="https://s3.ax1x.com/2020/12/23/ry4BJ1.png"></p>
+<pre class="line-numbers language-none"><code class="language-none">c2lnbl9pbg&#x3D;&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>base64解码为</p>
+<pre class="line-numbers language-none"><code class="language-none">sign_in<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>把<code>2^4_2^5_2^6.mp4</code>拖到010editor，发现文件尾有个PK开头的压缩包，复制另存为1.zip</p>
+<blockquote>
+<p>也可以用kali自带的binwalk提取</p>
+</blockquote>
+<p><img src="https://s3.ax1x.com/2020/12/23/rcAtr6.png"></p>
+<p>解压需要密码，将<code>sign_in</code>作为密码，解压得到19_20.txt</p>
+<pre class="line-numbers language-none"><code class="language-none">R1pCVE9OUlhHVTNES05SWkdZWVRNUVJYSEEzVEtOUlVHNFpUT09KWEdFM0RLTlJZRzRaVE9RSlhHRTNEUU5aWkdaQkRNTlpXRzQzVEdOWlpHNDRUTVFaV0lJM1RNTlpXR1k0UT09PT0&#x3D;
+
+&#x2F;&#x2F;The last layer is the single table replacement password<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>翻译：最后一层是单表替换密码</p>
+</blockquote>
+<p>base64解码得到</p>
+<pre class="line-numbers language-none"><code class="language-none">GZBTONRXGU3DKNRZGYYTMQRXHA3TKNRUG4ZTOOJXGE3DKNRYG4ZTOQJXGE3DQNZZGZBDMNZWG43TGNZZG44TMQZWII3TMNZWGY4Q&#x3D;&#x3D;&#x3D;&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>base32解码</p>
+<pre class="line-numbers language-none"><code class="language-none">6C76756569616B7875647379716568737A7168796B67677379796C6B767669<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>十六进制转字符</p>
+<pre class="line-numbers language-none"><code class="language-none">lvueiakxudsyqehszqhykggsyylkvvi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<br>
+
+<p><code>19_20.txt</code>说最后一层是单表替换密码，而仿射密码是一种表单代换密码</p>
+<p>根据文件名，设a=19，b=20</p>
+<p>使用脚本进行仿射密码解密</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">s <span class="token operator">=</span> <span class="token string">"lvueiakxudsyqehszqhykggsyylkvvi"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+a <span class="token operator">=</span> <span class="token number">19</span>
+b <span class="token operator">=</span> <span class="token number">20</span>
+
+<span class="token keyword">def</span> <span class="token function">get</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        k <span class="token operator">=</span> a <span class="token operator">//</span>b
+        remainder <span class="token operator">=</span> a <span class="token operator">%</span> b
+        x1<span class="token punctuation">,</span> y1 <span class="token operator">=</span> get<span class="token punctuation">(</span>b<span class="token punctuation">,</span> remainder<span class="token punctuation">)</span>
+        x<span class="token punctuation">,</span> y <span class="token operator">=</span>y1<span class="token punctuation">,</span> x1 <span class="token operator">-</span> k <span class="token operator">*</span> y1
+    <span class="token keyword">return</span> x<span class="token punctuation">,</span> y
+
+x<span class="token punctuation">,</span> y <span class="token operator">=</span> get<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">)</span>
+a1 <span class="token operator">=</span> x <span class="token operator">%</span> <span class="token number">26</span>
+ 
+l<span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cipher <span class="token operator">=</span> a1 <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span> <span class="token number">65</span> <span class="token operator">-</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span>
+    res<span class="token operator">=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>cipher <span class="token operator">+</span> <span class="token number">65</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>得到</p>
+<pre class="line-numbers language-none"><code class="language-none">flagyouhavesignedinsuccessfully<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>根据题目提示：flag格式flag{xxx_xxxx_xxxxxx_xx_xxxxxxxxxxxx}</p>
+<p>加上下划线，得到flag</p>
+<pre class="line-numbers language-none"><code class="language-none">flag&#123;you_have_signed_in_successfully&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>附：</p>
+<p>仿射密码解密原始脚本：<a target="_blank" rel="noopener" href="https://blog.csdn.net/x_yhy/article/details/83756908">仿射密码解密（Affine Cipher）</a></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#仿射密码解密</span>
+<span class="token comment">#改进欧几里得算法求线性方程的x与y</span>
+<span class="token keyword">def</span> <span class="token function">get</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        k <span class="token operator">=</span> a <span class="token operator">//</span>b
+        remainder <span class="token operator">=</span> a <span class="token operator">%</span> b
+        x1<span class="token punctuation">,</span> y1 <span class="token operator">=</span> get<span class="token punctuation">(</span>b<span class="token punctuation">,</span> remainder<span class="token punctuation">)</span>
+        x<span class="token punctuation">,</span> y <span class="token operator">=</span>y1<span class="token punctuation">,</span> x1 <span class="token operator">-</span> k <span class="token operator">*</span> y1
+    <span class="token keyword">return</span> x<span class="token punctuation">,</span> y
+ 
+s <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入解密字符："</span><span class="token punctuation">)</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+a <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入a："</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入b："</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ 
+<span class="token comment">#求a关于26的乘法逆元</span>
+x<span class="token punctuation">,</span> y <span class="token operator">=</span> get<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">26</span><span class="token punctuation">)</span>
+a1 <span class="token operator">=</span> x <span class="token operator">%</span> <span class="token number">26</span>
+ 
+l<span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cipher <span class="token operator">=</span> a1 <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span> <span class="token number">65</span> <span class="token operator">-</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span>
+    res<span class="token operator">=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>cipher <span class="token operator">+</span> <span class="token number">65</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/misc/">
+                                    <span class="chip bg-color">misc</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/me_zfb.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/me_wx.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/20201223.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="在云服务器上搭建博客">
+                        
+                        <span class="card-title">在云服务器上搭建博客</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            宝塔 + WordPress
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Notes/" class="post-category">
+                                    Notes
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+                        <span class="chip bg-color">搭建博客</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/20201203.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="无参数RCE">
+                        
+                        <span class="card-title">无参数RCE</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            无参数RCE：只使用函数，且函数不能带有参数
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category">
+                                    CTF
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right" id="mycss-footer-center">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2021</span>
+            
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">flag2020</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">30.5k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "10";
+                    var startDate = "8";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
