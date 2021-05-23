@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://flag2020.top/posts/20210523.html</loc>
+    
+    <lastmod>2021-05-23</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://flag2020.top/posts/20210406.html</loc>
     
     <lastmod>2021-04-28</lastmod>
@@ -172,57 +179,57 @@
 
   <url>
     <loc>https://flag2020.top/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://flag2020.top/tags/web/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <loc>https://flag2020.top/tags/writeup/</loc>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://flag2020.top/tags/writeup/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <loc>https://flag2020.top/tags/web/</loc>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://flag2020.top/tags/crypto/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://flag2020.top/tags/misc/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://flag2020.top/tags/ACM/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://flag2020.top/tags/blog/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://flag2020.top/tags/Linux/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -231,14 +238,14 @@
   
   <url>
     <loc>https://flag2020.top/categories/CTF/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://flag2020.top/categories/Notes/</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
